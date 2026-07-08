@@ -6,14 +6,14 @@
 
  <h2>Add New Book</h2>
 
-<Form asp-action = "Create" method="post">
+<form asp-action = "Create" method="post">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div class="mb-3">
         <label asp-for="Title" class="form-label"></label>
         <input asp-for="Title" class="form-control"/>
-        <span
-           asp-validation-for="Title" class=text-danger>
-        </span>
+        <span asp-validation-for="Title" class="text-danger"></span>
 
     </div> 
     <div class="mb-3">
@@ -32,13 +32,59 @@
 
     </div> 
 
+    <div class="mb-3">
+        <label asp-for="CategoryId" class="form-label"></label>
+
+        <select asp-for="CategoryId" class="form-select">
+            <option value="">-- Select Category --</option>
+            <option value="1">Programming</option>
+            <option value="2">Database</option>
+            <option value="3">Networking</option>
+        </select>
+
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+
+
+    <!-- Author ----------------------------------->
+        <div class="mb-3">
+            <label asp-for="AuthorId" class="form-label"></label>
+
+            <select asp-for="AuthorId" class="form-select">
+                <option value="">-- Select Author --</option>
+                <option value="1">Robert C. Martin</option>
+                <option value="2">Jon Skeet</option>
+                <option value="3">Andrew Troelsen</option>
+            </select>
+
+            <span asp-validation-for="AuthorId" class="text-danger"></span>
+        </div>
+          <!-- Publishers ----------------------------------->
+                
+                <div class="mb-3">
+            <label asp-for="PublisherId" class="form-label"></label>
+
+            <select asp-for="PublisherId" class="form-select">
+                <option value="">-- Select Publisher --</option>
+                <option value="1">O'Reilly Media</option>
+                <option value="2">Packt Publishing</option>
+                <option value="3">Microsoft Press</option>
+            </select>
+
+            <span asp-validation-for="PublisherId" class="text-danger"></span>
+        </div>
+
+
+          <!-- Button ----------------------------------->
+
      <button 
         type="Submit" class="btn btn-success">
           Save
     </button>
 
     <a asp-action="Index" class="btn btn-secondary">
-        Black To List
+        Back To List
     </a> 
 
-</Form>
+</form>
