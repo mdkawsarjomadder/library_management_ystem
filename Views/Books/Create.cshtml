@@ -1,0 +1,44 @@
+
+@model LibraryManagementSystem.Models.Book
+@{
+    ViewData["Title"] = "Add New Book";
+}
+
+ <h2>Add New Book</h2>
+
+<Form asp-action = "Create" method="post">
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control"/>
+        <span
+           asp-validation-for="Title" class=text-danger>
+        </span>
+
+    </div> 
+    <div class="mb-3">
+        <label asp-for="ISBN" class="form-label"></label>
+        <input asp-for="ISBN" class="form-control" />
+
+    </div> 
+    <div class="mb-3">
+        <label asp-for="TotalCopies" class="form-label"></label>
+         <input asp-for="TotalCopies" class="form-control" />
+
+    </div> 
+    <div class="mb-3">
+        <label asp-for="AvailableCopies" class="form-label"></label>
+         <input asp-for="AvailableCopies" class="form-control" />
+
+    </div> 
+
+     <button 
+        type="Submit" class="btn btn-success">
+          Save
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Black To List
+    </a> 
+
+</Form>

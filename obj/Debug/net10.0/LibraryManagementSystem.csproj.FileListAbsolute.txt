@@ -446,3 +446,4 @@ D:\D_Net\library_management_ystem\obj\Debug\net10.0\refint\LibraryManagementSyst
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.pdb
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.genruntimeconfig.cache
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\ref\LibraryManagementSystem.dll
+D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.sourcelink.json
