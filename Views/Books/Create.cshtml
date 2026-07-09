@@ -31,16 +31,16 @@
          <input asp-for="AvailableCopies" class="form-control" />
 
     </div> 
-
+     
+       <!-- CategoryId ----------------------------------->
     <div class="mb-3">
         <label asp-for="CategoryId" class="form-label"></label>
 
-        <select asp-for="CategoryId" class="form-select">
+            <select asp-for="CategoryId"
+            asp-items="ViewBag.Categories"
+            class="form-select">
             <option value="">-- Select Category --</option>
-            <option value="1">Programming</option>
-            <option value="2">Database</option>
-            <option value="3">Networking</option>
-        </select>
+            </select>
 
         <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
@@ -51,12 +51,11 @@
         <div class="mb-3">
             <label asp-for="AuthorId" class="form-label"></label>
 
-            <select asp-for="AuthorId" class="form-select">
-                <option value="">-- Select Author --</option>
-                <option value="1">Robert C. Martin</option>
-                <option value="2">Jon Skeet</option>
-                <option value="3">Andrew Troelsen</option>
-            </select>
+        <select asp-for="AuthorId"
+        asp-items="ViewBag.Authors"
+        class="form-select">
+        <option value="">-- Select Author --</option>
+        </select>
 
             <span asp-validation-for="AuthorId" class="text-danger"></span>
         </div>
@@ -65,11 +64,10 @@
                 <div class="mb-3">
             <label asp-for="PublisherId" class="form-label"></label>
 
-            <select asp-for="PublisherId" class="form-select">
+            <select asp-for="PublisherId"
+            asp-items="ViewBag.Publishers"
+            class="form-select">
                 <option value="">-- Select Publisher --</option>
-                <option value="1">O'Reilly Media</option>
-                <option value="2">Packt Publishing</option>
-                <option value="3">Microsoft Press</option>
             </select>
 
             <span asp-validation-for="PublisherId" class="text-danger"></span>
