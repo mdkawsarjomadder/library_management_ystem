@@ -126,7 +126,7 @@ namespace LibraryManagementSystem.Controllers
             return View(book);
         }
 
-    // Delete:Books/Delete/1
+    // Delete:Books/Delete/1...........................||
      
       public async Task<IActionResult> Delete(int? id)
         {
@@ -145,8 +145,26 @@ namespace LibraryManagementSystem.Controllers
             }
         return View(book);
         }
+
+    // POST: Books/Delete/1----------------------------||
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+
+
+
+    public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var book = await _context.Books.FindAsync(id);
+            if(book != null )
+            {
+                _context.Books.Remove(book);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
+          
+        }
     
 
 
-        }
+        }   // {public class BooksController : Controller}
         }
