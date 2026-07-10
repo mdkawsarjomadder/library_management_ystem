@@ -62,6 +62,59 @@ namespace LibraryManagementSystem.Controllers
             }
             return View(member);
         }
+        // POST: Members/Edit/1................................||
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> Edit(int id, Member member)
+        {
+            if(id != member.Id)
+            {
+                 return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                _context.Update(member);
+                await _context.SaveChangesAsync();
+
+
+                return RedirectToAction(nameof(Index));
+            }
+                return View(member);
+        }
+        // GET: Members/Delete/1-------------------||
+        public async Task<IActionResult> Delete(int? id)
+        {
+             if(id == null)
+            {
+                return NotFound();
+            }
+          var member = await _context.Members.FirstOrDefaultAsync(x => x.Id == id);
+
+          if(member == null)
+            {
+                return NotFound();
+            }
+            return View(member);
+        }
+
+    // POST: Members/Delete/1..........................|
+    [HttpPost,ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+
+    public async Task<IActionResult>DeleteConfirmed(int id)
+        {
+            var member = await _context.Members.FindAsync(id);
+            if(member != null)
+            {
+                _context.Members.Remove(member);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        
 
 
        } // MembersController : Controller    

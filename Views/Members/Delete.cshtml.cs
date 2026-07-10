@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace library_management_ystem.Views.Books
+namespace library_management_ystem.Views.Members
 {
     public class Delete : PageModel
     {
