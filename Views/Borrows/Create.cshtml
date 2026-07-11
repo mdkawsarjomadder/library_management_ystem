@@ -1,0 +1,60 @@
+
+    @model LibraryManagementSystem.Models.Borrow
+    @{
+        ViewData["Title"] = "Borrow Book ";
+    }
+
+    <h1>@ViewData["Title"]</h1>
+
+    <form  asp-action="Create" method="post" class="">
+
+        
+       <div class="">
+              <!-- #Book{Id}-->
+            <div class="mb-3">
+            <label asp-for="BookId" class="form-lable"></label>
+            <select asp-for="BookId"
+            asp-items="ViewBag.Books"
+            class="form-select">
+                <option value="">--Select Book--</option>
+            </select>
+        </div>
+         <!-- #Member{Id}-->
+        <div class="mb-3">
+            <label asp-for="MemberId" class="form-label"></label>
+            <select asp-for="MemberId"
+             asp-items="ViewBag.Members"
+             class="form-select">
+                <option value="">--Select Member---</option>
+            </select>
+        </div>
+
+         <!-- # Borrow Date-->
+        <div class="mb-3">
+            <label asp-for="BorrowDate" class="form-lable"></label>
+            <input asp-for="BorrowDate" type="date" class="form-control" />
+        </div>
+
+
+         <!-- # Due Date-->
+        <div class="mb-3">
+            <label asp-for="DueDate" class="form-lable"></label>
+            <input asp-for="DueDate" type="date" class="form-control" />
+        </div>
+       </div>
+       
+       <!-- #Button -->
+
+       <div class="">
+           <button type="submit" class="btn btn-success " >
+             save
+           </button>
+
+           <a asp-action="Index" class="btn btn-secondary">
+             Back To List
+           </a>
+       </div>
+        
+
+        
+    </form>

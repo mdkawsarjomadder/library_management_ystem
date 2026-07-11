@@ -20,6 +20,7 @@ namespace LibraryManagementSystem.Data
         public DbSet<Author> Authors {get; set;}
         public DbSet<Publisher> Publishers  {get; set;}
         public DbSet<Member> Members {get; set;}
+        public DbSet<Borrow> Borrows {get; set;}
 
     }
 }

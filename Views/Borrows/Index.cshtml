@@ -1,0 +1,68 @@
+   @model IEnumerable<LibraryManagementSystem.Models.Borrow>
+    @{
+        ViewData["Title"] = "Borrow List";
+    }
+
+    <h1>@ViewData["Title"]</h1>
+
+    <p class="">
+    Borrow Module is Ready.
+    </p>
+    <p>
+        <a asp-action="Create" class="btn btn-primary">
+            Borrow New Book
+        </a>
+    </p>
+
+     <table class="table table-bordered table-striped text-center">
+            <thead>
+                    <tr class="text-center">
+                         <th class="">Book</th>
+                         <th class="">Member</th>
+                         <th class="">Borrow Date</th>
+                         <th class="">Due Date</th>
+                         <th class="">Return Date</th>
+                         <th class="">Action</th>
+                    </tr>
+            </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Book?.Title</td>
+                    <td>@item.Member?.Name</td>
+                    <td>@item.BorrowDate.ToShortDateString()</td>
+                    <td>@item.DueDate.ToShortDateString()</td>
+                    <td>
+                        @(item.ReturnDate.HasValue
+                        ? item.ReturnDate.Value.ToShortDateString()
+                        : "Not Returned")
+                    </td>
+             
+
+                <!-- #Action -->
+
+                <td>
+                    @if(item.ReturnDate  == null)
+                    {
+                        <a asp-action="Return" 
+                        asp-route-id="@item.Id"
+                        class="btn btn-success btn-sm">
+                            Return
+                        </a>
+                    }
+                    else
+                    {
+                        <span class="text-success">
+                            Returned
+                        </span>
+                    }
+                </td>
+              </tr>
+            }
+        </tbody>
+     </table>
+
+
+  
