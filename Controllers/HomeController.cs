@@ -1,13 +1,26 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using LibraryManagementSystem.Models;
+using LibraryManagementSystem.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagementSystem.Controllers;
 
 public class HomeController : Controller
 {
-    public IActionResult Index()
+    private readonly AppDbContext _context;
+    public HomeController(AppDbContext context)
+        {
+            _context = context;
+        }
+     public IActionResult Index()
     {
+        ViewBag.TotalBooks = _context.Books.Count();
+        ViewBag.TotalMembers = _context.Members.Count();
+        ViewBag.TotalBorrowed = _context.Borrows.Count(x => x.ReturnDate == null);
+        ViewBag.TotalReturned = _context.Borrows.Count(x => x.ReturnDate != null);
+        ViewBag.AvailableBooks  = _context.Books.Sum(x => x.AvailableCopies);
+
         return View();
     }
 

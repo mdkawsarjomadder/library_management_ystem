@@ -1,8 +1,48 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿    @{
+        ViewData["Title"] = "Dashboard";
+    }  
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <h2 class="mb-4"> Library Management Dashboard.</h2>
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <h5>Total Books</h5>
+                    <h2>@ViewBag.TotalBooks</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card bg-success text-white">
+                <div class="card-body text-center">
+                    <h5>Total Members</h5>
+                    <h2>@ViewBag.TotalMembers</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card bg-info  text-white">
+                <div class="card-body text-center">
+                    <h5>Borrowed Books</h5>
+                    <h2>@ViewBag.TotalBorrowed</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card bg-danger text-white">
+                <div class="card-body text-center">
+                    <h5>Retured Book Books</h5>
+                    <h2>@ViewBag.TotalReturned</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card bg-secondary text-white">
+                <div class="card-body text-center">
+                    <h5>Available Book Books</h5>
+                    <h2>@ViewBag.AvailableBooks</h2>
+                </div>
+            </div>
+        </div>
+    </div>
