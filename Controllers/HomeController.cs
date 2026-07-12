@@ -4,6 +4,7 @@ using LibraryManagementSystem.Models;
 using LibraryManagementSystem.Data;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace LibraryManagementSystem.Controllers;
 
 public class HomeController : Controller
@@ -13,16 +14,6 @@ public class HomeController : Controller
         {
             _context = context;
         }
-     public IActionResult Index()
-    {
-        ViewBag.TotalBooks = _context.Books.Count();
-        ViewBag.TotalMembers = _context.Members.Count();
-        ViewBag.TotalBorrowed = _context.Borrows.Count(x => x.ReturnDate == null);
-        ViewBag.TotalReturned = _context.Borrows.Count(x => x.ReturnDate != null);
-        ViewBag.AvailableBooks  = _context.Books.Sum(x => x.AvailableCopies);
-
-        return View();
-    }
 
     public IActionResult Privacy()
     {
@@ -33,5 +24,28 @@ public class HomeController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+
+
+    //Recent Borrow History in a Dashboard......................|
+
+    public IActionResult Index()
+    {
+        ViewBag.TotalBooks = _context.Books.Count();
+        ViewBag.TotalMembers = _context.Members.Count();
+        ViewBag.TotalBorrowed = _context.Borrows.Count(x => x.ReturnDate == null);
+        ViewBag.TotalReturned = _context.Borrows.Count(x => x.ReturnDate != null);
+        ViewBag.AvailableBooks = _context.Books.Sum(x => x.AvailableCopies);
+
+
+        var recentBorrows= _context.Borrows
+                 .Include(x => x.Book)
+                 .Include(x => x.Member)
+                 .OrderByDescending(x => x.BorrowDate)
+                 .Take(5)
+                 .ToList();
+
+
+            return View(recentBorrows);
     }
 }

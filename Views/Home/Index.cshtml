@@ -1,48 +1,122 @@
-﻿    @{
+﻿    @model IEnumerable<LibraryManagementSystem.Models.Borrow>
+    @{
         ViewData["Title"] = "Dashboard";
     }  
 
-    <h2 class="mb-4"> Library Management Dashboard.</h2>
+    <h2 class="mb-4"> Library Management Dashboard</h2>
+       <!-- #Dashboard Quick Actions.........-->
 
-    <div class="row">
+    <div class="mb-4">
+            <a  asp-controller="Books"
+              asp-action="Create"
+              class="btn btn-primary mt-2">
+                ➕ Add Book
+            </a>
+            <a  asp-controller="Members"
+              asp-action="Create"
+              class="btn btn-success mt-2">
+                👤 Add Member
+            </a>
+            <a  asp-controller="Borrows"
+              asp-action="Create"
+              class="btn btn-warning mt-2">
+                 📚 Borrow Book
+            </a>
+            <a  asp-controller="Borrows"
+              asp-action="Index"
+              class="btn btn-info mt-2 text-white">
+                📖 View Borrows
+            </a>
+    </div>
+
+     <!-- # Statistics Cards in code ............-->
+    <div class="row ">
         <div class="col-md-4 mb-3">
-            <div class="card bg-primary text-white">
-                <div class="card-body text-center">
+            <div class="card bg-primary text-white text-center dashboard-card">
+                <div class="card-body">
                     <h5>Total Books</h5>
                     <h2>@ViewBag.TotalBooks</h2>
                 </div>
             </div>
         </div>
         <div class="col-md-4 mb-3">
-            <div class="card bg-success text-white">
-                <div class="card-body text-center">
+            <div class="card bg-success text-white text-center dashboard-card">
+                <div class="card-body ">
                     <h5>Total Members</h5>
                     <h2>@ViewBag.TotalMembers</h2>
                 </div>
             </div>
         </div>
         <div class="col-md-4 mb-3">
-            <div class="card bg-info  text-white">
-                <div class="card-body text-center">
+            <div class="card bg-info  text-white text-center dashboard-card">
+                <div class="card-body ">
                     <h5>Borrowed Books</h5>
                     <h2>@ViewBag.TotalBorrowed</h2>
                 </div>
             </div>
         </div>
         <div class="col-md-4 mb-3">
-            <div class="card bg-danger text-white">
-                <div class="card-body text-center">
-                    <h5>Retured Book Books</h5>
+            <div class="card bg-danger text-white text-center dashboard-card">
+                <div class="card-body ">
+                    <h5>Retured Books</h5>
                     <h2>@ViewBag.TotalReturned</h2>
                 </div>
             </div>
         </div>
         <div class="col-md-4 mb-3">
-            <div class="card bg-secondary text-white">
-                <div class="card-body text-center">
-                    <h5>Available Book Books</h5>
+            <div class="card bg-secondary text-white text-center dashboard-card">
+                <div class="card-body ">
+                    <h5>Available Books</h5>
                     <h2>@ViewBag.AvailableBooks</h2>
                 </div>
             </div>
         </div>
     </div>
+
+      <hr>
+
+      <h4 class="mt-4">Recent Borrow History</h4>
+      <div class="table-responsive rounded overflow-hidden shadow-sm">
+            <table class="table table-bordered table-striped mb-0 text-center">
+             <thead class="table-dark">
+                 <tr class="">
+                     <th class="">Book</th>
+                     <th class="">Member</th>
+                     <th class="">Borrow Date</th>
+                     <th class="">Due Date</th>
+                     <th class="">Status</th>
+                 </tr>
+             </thead>
+
+             <tbody>
+                @foreach(var item in Model)
+                 {
+                    <tr>
+                        <td>@item.Book?.Title</td>
+                        <td>@item.Member?.Name</td>
+                        <td>@item.BorrowDate.ToShortDateString()</td>
+                        <td>@item.DueDate.ToShortDateString()</td>
+                        <td>
+                            @if(item.ReturnDate == null)
+                               {
+                                <span class="badge bg-warning text-dark">
+                                    Borrowed
+                                </span>
+                               }
+                               else
+                               {
+                                <span class="badge bg-success">
+                                    Returned
+                                </span>
+                               }
+                        </td>
+                    </tr>
+
+                 }
+             </tbody>
+         </table>
+      </div>
+
+
+    
+
