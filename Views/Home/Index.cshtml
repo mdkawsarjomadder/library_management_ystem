@@ -3,7 +3,14 @@
         ViewData["Title"] = "Dashboard";
     }  
 
-    <h2 class="mb-4"> Library Management Dashboard</h2>
+    <div class="mt-2 pt-2">
+         <h2 class="fw-bold"> 
+           📚 Library Management Dashboard
+         </h2>
+         <p class="text-muted">
+                Welcome to the Library Management Dashboard
+         </p>
+    </div>
        <!-- #Dashboard Quick Actions.........-->
 
     <div class="mb-4">
@@ -32,42 +39,52 @@
      <!-- # Statistics Cards in code ............-->
     <div class="row ">
         <div class="col-md-4 mb-3">
-            <div class="card bg-primary text-white text-center dashboard-card">
-                <div class="card-body">
+            <div class="card bg-primary text-white text-center dashboard-card shadow border-0">
+                <div class="card-body py-4">
                     <h5>Total Books</h5>
-                    <h2>@ViewBag.TotalBooks</h2>
+                    <h2 class="display-5 fw-bold">
+                        @ViewBag.TotalBooks
+                        </h2>
                 </div>
             </div>
         </div>
         <div class="col-md-4 mb-3">
-            <div class="card bg-success text-white text-center dashboard-card">
-                <div class="card-body ">
+            <div class="card bg-success text-white text-center dashboard-card shadow border-0">
+                <div class="card-body py-4">
                     <h5>Total Members</h5>
-                    <h2>@ViewBag.TotalMembers</h2>
+                    <h2 class="display-5 fw-bold">
+                        @ViewBag.TotalMembers
+                        </h2>
                 </div>
             </div>
         </div>
         <div class="col-md-4 mb-3">
-            <div class="card bg-info  text-white text-center dashboard-card">
-                <div class="card-body ">
+            <div class="card bg-info  text-white text-center dashboard-card shadow border-0">
+                <div class="card-body py-4">
                     <h5>Borrowed Books</h5>
-                    <h2>@ViewBag.TotalBorrowed</h2>
+                    <h2 class="display-5 fw-bold">
+                        @ViewBag.TotalBorrowed
+                        </h2>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mb-3">
-            <div class="card bg-danger text-white text-center dashboard-card">
-                <div class="card-body ">
+        <div class="col-md-6 mb-3">
+            <div class="card bg-danger text-white text-center dashboard-card shadow border-0">
+                <div class="card-body py-4 ">
                     <h5>Retured Books</h5>
-                    <h2>@ViewBag.TotalReturned</h2>
+                    <h2 class="display-5 fw-bold">
+                        @ViewBag.TotalReturned
+                        </h2>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mb-3">
-            <div class="card bg-secondary text-white text-center dashboard-card">
-                <div class="card-body ">
-                    <h5>Available Books</h5>
-                    <h2>@ViewBag.AvailableBooks</h2>
+        <div class="col-md-6 mb-3">
+            <div class="card bg-secondary text-white text-center dashboard-card shadow border-0">
+                <div class="card-body py-4">
+                    <h5 class="">Available Books</h5>
+                    <h2 class="display-5 fw-bold">
+                        @ViewBag.AvailableBooks
+                        </h2>
                 </div>
             </div>
         </div>

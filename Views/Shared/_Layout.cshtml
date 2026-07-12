@@ -10,65 +10,90 @@
     <link rel="stylesheet" href="~/LibraryManagementSystem.styles.css" asp-append-version="true" />
 </head>
 <body>
+        @{
+            var currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
+        }  
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LibraryManagementSystem</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                   
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" 
-                                asp-area="" 
-                                asp-controller="Home" 
-                                asp-action="Index">
-                                Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" 
-                                asp-area="" 
-                                asp-controller="Books" 
-                                asp-action="Index">
-                                Books
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" 
-                                asp-area="" 
-                                asp-controller="Members" 
-                                asp-action="Index">
-                                Members
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" 
-                                asp-area="" 
-                                asp-controller="Borrows" 
-                                asp-action="Index">
-                                Borrows
-                            </a>
-                        </li>
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm fixed-top">
+        <div class="container">
 
-                    </ul>
+            <!-- Logo -->
+            <a class="navbar-brand"
+               asp-controller="Home"
+               asp-action="Index">
+                📚 LibraryMS
+            </a>
 
-                </div>
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "Home" ? "active" : "")"
+                           asp-controller="Home"
+                           asp-action="Index">
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "Books" ? "active" : "")"
+                           asp-controller="Books"
+                           asp-action="Index">
+                            Books
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "Members" ? "active" : "")"
+                           asp-controller="Members"
+                           asp-action="Index">
+                            Members
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @(currentController == "Borrows" ? "active" : "")"
+                           asp-controller="Borrows"
+                           asp-action="Index">
+                            Borrows
+                        </a>
+                    </li>
+
+                </ul>
+
             </div>
-        </nav>
-    </header>
+
+        </div>
+    </nav>
+</header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
         <div class="container">
-            &copy; 2026 - LibraryManagementSystem | ASP.NET Core MVC<a asp-area="" ></a>
+           <span>
+            © 2026 Library Management System 
+           </span>
+           <p>
+            ASP.NET Core MVC
+           </p>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

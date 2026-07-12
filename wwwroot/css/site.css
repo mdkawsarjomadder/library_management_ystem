@@ -1,31 +1,89 @@
-html {
-  font-size: 14px;
+html{
+    font-size:14px;
+    min-height:100%;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+@media (min-width:768px){
+    html{
+        font-size:16px;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    padding-top:72px;
+    overflow-y:scroll;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+main{
+    flex:1;
 }
 
-body {
-  margin-bottom: 60px;
+footer{
+    background:#212529;
+    color:#fff;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* Bootstrap Focus */
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus{
+    box-shadow:0 0 0 .1rem #fff,
+               0 0 0 .25rem #258cfb;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+/* Floating Placeholder */
+
+.form-floating>.form-control-plaintext::placeholder,
+.form-floating>.form-control::placeholder{
+    color:var(--bs-secondary-color);
+    text-align:end;
+}
+
+.form-floating>.form-control-plaintext:focus::placeholder,
+.form-floating>.form-control:focus::placeholder{
+    text-align:start;
+}
+
+/* ==========================
+        NAVBAR
+========================== */
+
+.navbar{
+    padding:10px 0;
+}
+
+.navbar-brand{
+    font-size:1.5rem;
+    font-weight:700;
+    letter-spacing:.5px;
+}
+
+.navbar-nav{
+    gap:6px;
+}
+
+.navbar .nav-link{
+    color:#ffffff !important;
+    padding:8px 16px;
+    border-radius:8px;
+    font-weight:600;
+    white-space:nowrap;
+    transition:background-color .2s ease,color .2s ease;
+}
+
+.navbar .nav-link:hover{
+    background:#495057;
+    color:#ffc107 !important;
+}
+
+.navbar .nav-link.active{
+    background:#ffc107;
+    color:#212529 !important;
 }
