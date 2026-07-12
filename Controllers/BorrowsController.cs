@@ -15,15 +15,23 @@ namespace LibraryManagementSystem.Controllers
             _context = context;
         }
 
-        // GET: Borrows
-        public async Task<IActionResult> Index()
+        // GET: Borrows or Search button add------------------|
+        public async Task<IActionResult> Index(string? searchString)
         {
-            var borrows = await _context.Borrows
+            var borrows =  _context.Borrows
                 .Include(x => x.Book)
                 .Include(x => x.Member)
-                .ToListAsync();
+                .AsQueryable();
 
-            return View(borrows);
+        if(!string.IsNullOrWhiteSpace(searchString))
+            {
+               borrows = borrows.Where(x =>
+                (x.Book != null && x.Book.Title.Contains(searchString)) ||
+                (x.Member != null && x.Member.Name.Contains(searchString)));
+            }
+            ViewBag.SearchString = searchString;
+
+            return View(await borrows.ToListAsync());
         }
 
         // GET: Borrows/Create

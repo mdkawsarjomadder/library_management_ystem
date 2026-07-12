@@ -15,156 +15,136 @@ namespace LibraryManagementSystem.Controllers
             _context = context;
         }
 
-        // GET: Books
-        public async Task<IActionResult> Index()
+        // ===============================
+        // GET: Books (Search Included)
+        // ===============================
+        public async Task<IActionResult> Index(string? searchString)
         {
-            var books = await _context.Books
+            var books = _context.Books
                 .Include(x => x.Category)
                 .Include(x => x.Author)
                 .Include(x => x.Publisher)
-                .ToListAsync();
+                .AsQueryable();
 
-            return View(books);
+            if (!string.IsNullOrWhiteSpace(searchString))
+            {
+                books = books.Where(x => x.Title.Contains(searchString));
+            }
+
+            ViewBag.SearchString = searchString;
+
+            return View(await books.ToListAsync());
         }
 
         // GET: Books/Create
+
         public IActionResult Create()
         {
-        ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name");
-        ViewBag.Authors = new SelectList(_context.Authors, "Id", "Name");
-        ViewBag.Publishers = new SelectList(_context.Publishers, "Id", "Name");
+            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name");
+            ViewBag.Authors = new SelectList(_context.Authors, "Id", "Name");
+            ViewBag.Publishers = new SelectList(_context.Publishers, "Id", "Name");
 
-        return View();
+            return View();
         }
 
         // POST: Books/Create
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Book book)
         {
-        if (ModelState.IsValid)
-        {
-        _context.Books.Add(book);
-        await _context.SaveChangesAsync();
-
-        return RedirectToAction(nameof(Index));
-        }
-
-        ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name");
-        ViewBag.Authors = new SelectList(_context.Authors, "Id", "Name");
-        ViewBag.Publishers = new SelectList(_context.Publishers, "Id", "Name");
-
-        return View(book);
-        }
-    // GET: Books/Edit/1
-     public async Task<IActionResult> Edit(int? id)
-        {
-            if(id == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
-            }
-        var book = await _context.Books.FindAsync(id);
-           if(book == null)
-            {
-                return NotFound();
-            }
-            ViewBag.Categories = new SelectList(
-                _context.Categories,
-                 "Id", 
-                 "Name",
-             book.CategoryId);
+                _context.Books.Add(book);
+                await _context.SaveChangesAsync();
 
-            ViewBag.Authors = new SelectList(
-                _context.Authors,
-                     "Id", 
-                     "Name",
-             book.AuthorId);
-            ViewBag.Publishers = new SelectList(
-                _context.Publishers, 
-                        "Id", 
-                        "Name", 
-            book.PublisherId);
+                return RedirectToAction(nameof(Index));
+            }
 
+            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name");
+            ViewBag.Authors = new SelectList(_context.Authors, "Id", "Name");
+            ViewBag.Publishers = new SelectList(_context.Publishers, "Id", "Name");
 
             return View(book);
         }
 
-      // POST: Books/Edit/1
+        // GET: Books/Edit/1
 
-      [HttpPost]
-      [ValidateAntiForgeryToken]
-      public async Task<IActionResult> Edit(int id, Book book)
+        public async Task<IActionResult> Edit(int? id)
         {
-            if(id != book.Id)
-            {
-                return NotFound();                
-            }
-            if(ModelState.IsValid)
-            {
-               _context.Update(book);
-            await _context.SaveChangesAsync();
+            if (id == null)
+                return NotFound();
 
-              return RedirectToAction(nameof(Index));
-            }
-         ViewBag.Categories = new SelectList(
-            _context.Categories, 
-            "Id", 
-            "Name",
-             book.CategoryId);
-        ViewBag.Authors = new SelectList(
-            _context.Authors,
-             "Id",
-             "Name",
-             book.AuthorId);
-        ViewBag.Publishers = new SelectList(
-            _context.Publishers,
-             "Id", 
-             "Name",
-             book.PublisherId);
+            var book = await _context.Books.FindAsync(id);
 
+            if (book == null)
+                return NotFound();
+
+            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name", book.CategoryId);
+            ViewBag.Authors = new SelectList(_context.Authors, "Id", "Name", book.AuthorId);
+            ViewBag.Publishers = new SelectList(_context.Publishers, "Id", "Name", book.PublisherId);
 
             return View(book);
         }
 
-    // Delete:Books/Delete/1...........................||
-     
-      public async Task<IActionResult> Delete(int? id)
-        {
-            if(id == null)
-            {
-            return NotFound();
-            }
-        var book = await _context.Books.Include(x =>x.Category)
-        .Include(x => x.Author)
-        .Include(x => x.Publisher)
-        .FirstOrDefaultAsync(x =>x.Id == id);
+        // POST: Books/Edit/1
 
-        if(book == null)
-            {
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Book book)
+        {
+            if (id != book.Id)
                 return NotFound();
+
+            if (ModelState.IsValid)
+            {
+                _context.Update(book);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
             }
-        return View(book);
+
+            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name", book.CategoryId);
+            ViewBag.Authors = new SelectList(_context.Authors, "Id", "Name", book.AuthorId);
+            ViewBag.Publishers = new SelectList(_context.Publishers, "Id", "Name", book.PublisherId);
+
+            return View(book);
         }
 
-    // POST: Books/Delete/1----------------------------||
-    [HttpPost, ActionName("Delete")]
-    [ValidateAntiForgeryToken]
+        // GET: Books/Delete/1
 
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+                return NotFound();
 
+            var book = await _context.Books
+                .Include(x => x.Category)
+                .Include(x => x.Author)
+                .Include(x => x.Publisher)
+                .FirstOrDefaultAsync(x => x.Id == id);
 
-    public async Task<IActionResult> DeleteConfirmed(int id)
+            if (book == null)
+                return NotFound();
+
+            return View(book);
+        }
+
+        // POST: Books/Delete/1
+       
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var book = await _context.Books.FindAsync(id);
-            if(book != null )
+
+            if (book != null)
             {
                 _context.Books.Remove(book);
                 await _context.SaveChangesAsync();
             }
+
             return RedirectToAction(nameof(Index));
-          
         }
-    
-
-
-        }   // {public class BooksController : Controller}
-        }
+    }
+}

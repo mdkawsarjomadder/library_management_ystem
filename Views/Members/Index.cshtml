@@ -4,6 +4,33 @@
         ViewData["Title"] = "Member List";
     }
 
+   <!-- #Search Button Create --    --------------------------->
+      <form 
+        method="get" 
+        class="row g-2 mb-3 pt-2">
+
+    <div class="col-md-4">
+        <input type="text"
+               name="searchString"
+               value="@ViewBag.SearchString"
+               class="form-control"
+               placeholder="🔍 Search by Name or Email..." />
+    </div>
+
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary">
+            Search
+        </button>
+    </div>
+
+    <div class="col-auto">
+        <a asp-action="Index" class="btn btn-secondary">
+            Reset
+        </a>
+    </div>
+
+</form>
+   
     <h1>Member List</h1>
 
     <p>

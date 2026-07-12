@@ -371,7 +371,6 @@ D:\D_Net\library_management_ystem\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\scopedcss\bundle\LibraryManagementSystem.styles.css
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\scopedcss\projectbundle\LibraryManagementSystem.bundle.scp.css
-D:\D_Net\library_management_ystem\obj\Debug\net10.0\compressed\wadqovfpf4-{0}-b9sayid5wm-b9sayid5wm.gz
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\compressed\xcjc30fb65-{0}-61n19gt1b8-61n19gt1b8.gz
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\compressed\ce6dsg7zx7-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\compressed\v6rmf15oqo-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -447,3 +446,4 @@ D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.pdb
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.genruntimeconfig.cache
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\ref\LibraryManagementSystem.dll
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.sourcelink.json
+D:\D_Net\library_management_ystem\obj\Debug\net10.0\compressed\wadqovfpf4-{0}-nuoaduuh0s-nuoaduuh0s.gz

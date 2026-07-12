@@ -18,10 +18,20 @@ namespace LibraryManagementSystem.Controllers
         _context = context;
     }
 
-    public async Task<IActionResult> Index()
+    
+        //Members in a search button create
+    public async Task<IActionResult> Index(string? searchString)
     {
-        var members = await _context.Members.ToListAsync();
-        return View(members);
+        var members =  _context.Members.AsQueryable();
+         if( !string.IsNullOrWhiteSpace(searchString))
+            {
+                members = members.Where(x => 
+                x.Name.Contains(searchString) ||
+                x.Email.Contains(searchString));
+            }
+            ViewBag.SearchString = searchString;
+
+        return View(await members.ToListAsync());
     }
 
 

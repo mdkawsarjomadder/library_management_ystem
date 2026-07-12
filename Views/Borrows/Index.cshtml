@@ -3,8 +3,34 @@
         ViewData["Title"] = "Borrow List";
     }
 
-    <h1>@ViewData["Title"]</h1>
+   
 
+
+    <h1>@ViewData["Title"]</h1>
+        <!-- # Search Form Create -->
+       <form asp-controller="Borrows" 
+            asp-action="Index"
+            method="get"
+            class="row g-2 mb-3 " >
+        <div class="col-md-4">
+            <input type="text"
+            name="searchString"
+            value="@ViewBag.SearchString"
+            class="form-control"
+            placeholder="🔍 Search by Book or Member."
+            >
+        </div>
+        <div class="col-auto">
+             <button type="submit" class="btn btn-primary">
+                🔍Search
+             </button>
+        </div>
+        <div class="col-auto">
+            <a asp-action="Index" class="btn btn-secondary">
+                Reset
+            </a>
+        </div>
+     </form>
     <p class="">
     Borrow Module is Ready.
     </p>
