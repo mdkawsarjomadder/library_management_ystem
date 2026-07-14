@@ -38,9 +38,9 @@ public class HomeController : Controller
         ViewBag.TotalBorrowed = _context.Borrows.Count(x => x.ReturnDate == null);
         ViewBag.TotalReturned = _context.Borrows.Count(x => x.ReturnDate != null);
         ViewBag.AvailableBooks = _context.Books.Sum(x => x.AvailableCopies);
-        ViewBag.TotalOverDue = _context.Borrows.Count(x =>
-                                x.ReturnDate == null &&
-                                x.DueDate < DateTime.Today);
+        ViewBag.TotalOverDue=  _context.Borrows
+                        .CountAsync( x => x.ReturnDate == null && 
+                                    x.DueDate < DateTime.Today);
 
 
         var recentBorrows= _context.Borrows

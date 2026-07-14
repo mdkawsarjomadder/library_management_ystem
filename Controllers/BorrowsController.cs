@@ -15,8 +15,9 @@ namespace LibraryManagementSystem.Controllers
             _context = context;
         }
 
-        // GET: Borrows or Search button add------------------|
-        public async Task<IActionResult> Index(string? searchString)
+        // GET: Borrows or Search button add--- And Next Button Create---------------|
+        const int pageSize = 10;
+        public async Task<IActionResult> Index(string? searchString, int page = 1)
         {
             var borrows =  _context.Borrows
                 .Include(x => x.Book)
@@ -26,12 +27,22 @@ namespace LibraryManagementSystem.Controllers
         if(!string.IsNullOrWhiteSpace(searchString))
             {
                borrows = borrows.Where(x =>
-                (x.Book != null && x.Book.Title.Contains(searchString)) ||
-                (x.Member != null && x.Member.Name.Contains(searchString)));
+                x.Book!.Title.Contains(searchString) ||
+                x.Member!.Name.Contains(searchString));
             }
+
+            int totalRecords = await borrows.CountAsync();
+            int totalPages = (int)Math.Ceiling((double) totalRecords / pageSize);
+
+            var date = await borrows.OrderByDescending(x => x.BorrowDate)
+                        .Skip((page - 1 ) * pageSize)
+                        .Take(pageSize)
+                        .ToListAsync();
+            ViewBag.CurrentPage = page;            
+            ViewBag.TotalPages = totalPages;            
             ViewBag.SearchString = searchString;
 
-            return View(await borrows.ToListAsync());
+            return View(date);
         }
 
         // GET: Borrows/Create

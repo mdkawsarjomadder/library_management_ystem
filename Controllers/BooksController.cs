@@ -15,10 +15,11 @@ namespace LibraryManagementSystem.Controllers
             _context = context;
         }
 
-        // ===============================
         // GET: Books (Search Included)
-        // ===============================
-        public async Task<IActionResult> Index(string? searchString)
+        
+
+         const int pageSize = 10;
+        public async Task<IActionResult> Index(string? searchString, int page = 1)
         {
             var books = _context.Books
                 .Include(x => x.Category)
@@ -30,10 +31,26 @@ namespace LibraryManagementSystem.Controllers
             {
                 books = books.Where(x => x.Title.Contains(searchString));
             }
+             //Total Record Count...
+             int totalBooks = await books.CountAsync();
 
-            ViewBag.SearchString = searchString;
+             //total Page.....
+             int totalPages = (int)Math.Ceiling((double)totalBooks / pageSize);
+                
+                     // Pagination
+             var pagedBooks = await books
+                              .OrderBy(x => x.Id)
+                              .Skip((page -1 ) * pageSize)
+                             .Take(pageSize)
+                             .ToListAsync();
 
-            return View(await books.ToListAsync());
+
+
+        ViewBag.SearchString = searchString;
+        ViewBag.CurrentPage = page;
+        ViewBag.TotalPages = totalPages;
+
+        return View(pagedBooks);
         }
 
         // GET: Books/Create

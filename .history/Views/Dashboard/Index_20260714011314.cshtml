@@ -1,0 +1,188 @@
+
+
+
+
+
+
+
+ @model LibraryManagementSystem.Models.DashboardViewModel
+    @{
+        ViewData["Title"] = "Dashboard";
+    }
+
+    <h1>@ViewData["Title"]</h1>
+      <p class="mt-2">
+        Welcome to Library Management System
+      </p>
+
+    <div class="row">
+
+       <!-- TotalBooks -->
+         <div class="col-md-6">
+             <div class="card bg-primary text-white mb-3">
+                <div class="card-body text-center">
+                    <h5>Total Books</h5>
+                    <h2>@ViewBag.TotalBooks</h2>
+                </div>
+             </div>
+         </div>
+
+          <!-- Total Members -->
+         <div class="col-md-6">
+             <div class="card bg-success text-white mb-3">
+                <div class="card-body text-center">
+                    <h5>Total Members</h5>
+                    <h2>@ViewBag.TotalMembers</h2>
+                </div>
+             </div>
+         </div>
+
+          <!-- TotalBooks -->
+         <div class="col-md-6">
+             <div class="card bg-info text-white mb-3">
+                <div class="card-body text-center">
+                    <h5>Total Borrows</h5>
+                    <h2>@ViewBag.TotalBorrows</h2>
+                </div>
+             </div>
+         </div>
+          
+           <!-- Total OverDue -->
+         <div class="col-md-6">
+             <div class="card bg-warning text-white mb-3">
+                <div class="card-body text-center">
+                    <h5>Total OverDue</h5>
+                    <h2>@ViewBag.TotalOverDue</h2>
+                </div>
+             </div>
+         </div>
+
+
+         <hr>
+         <p class="text-center"> Available | Borrowed</p>
+         <hr>
+
+         <!-- AvailableBooks -->
+         <div class="col-md-6">
+            <div class="card bg-success text-white mb-3">
+                <div class="card-body text-center">
+                    <h5>Available Books</h5>
+                    <h2>@ViewBag.AvailableBooks</h2>
+                </div>
+            </div>
+         </div>
+
+
+         <div class="col-md-6">
+            <div class="card bg-info text-white mb-3">
+                <div class="card-body text-center">
+                    <h5>Borrowed Books</h5>
+                    <h2>@ViewBag.BorrowedBooks</h2>
+                </div>
+            </div>
+         </div>
+        
+    </div>
+
+    <hr>
+
+    <hr />
+
+<h4 class="mt-4">📖 Recent Borrow History</h4>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped text-center">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Book</th>
+                <th>Member</th>
+                <th>Borrow Date</th>
+                <th>Due Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        @foreach (var item in ViewBag.RecentBorrows)
+        {
+            <tr>
+
+                <td>@item.Book.Title</td>
+
+                <td>@item.Member.Name</td>
+
+                <td>@item.BorrowDate.ToShortDateString()</td>
+
+                <td>@item.DueDate.ToShortDateString()</td>
+
+                <td>
+
+                    @if (item.ReturnDate != null)
+                    {
+                        <span class="badge bg-success">
+                            Returned
+                        </span>
+                    }
+                    else if (item.DueDate < DateTime.Today)
+                    {
+                        <span class="badge bg-danger">
+                            Overdue
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning text-dark">
+                            Borrowed
+                        </span>
+                    }
+
+                </td>
+
+            </tr>
+        }
+
+        </tbody>
+
+    </table>
+</div>
+
+
+
+
+ <div class="row mb-4">
+
+    <div class="col-md-3 mb-2">
+        <a asp-controller="Books"
+           asp-action="Create"
+           class="btn btn-primary w-100">
+            ➕ Add Book
+        </a>
+    </div>
+
+    <div class="col-md-3 mb-2">
+        <a asp-controller="Members"
+           asp-action="Create"
+           class="btn btn-success w-100">
+            👤 Add Member
+        </a>
+    </div>
+
+    <div class="col-md-3 mb-2">
+        <a asp-controller="Borrows"
+           asp-action="Create"
+           class="btn btn-warning w-100 text-dark">
+            📚 Borrow Book
+        </a>
+    </div>
+
+    <div class="col-md-3 mb-2">
+        <a asp-controller="Borrows"
+           asp-action="Index"
+           class="btn btn-info w-100 text-white">
+            📖 View Borrows
+        </a>
+    </div>
+
+</div>
