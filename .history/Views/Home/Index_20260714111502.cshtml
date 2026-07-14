@@ -1,0 +1,190 @@
+﻿   
+
+     @model IEnumerable<LibraryManagementSystem.Models.Borrow>
+    @{
+        ViewData["Title"] = "Dashboard";
+    }  
+
+    <div class="mt-2 pt-2">
+         <h2 class="fw-bold"> 
+           📚 Library Management Dashboard
+         </h2>
+         <p class="text-muted">
+                Welcome to the Library Management Dashboard
+         </p>
+    </div>
+       <!-- #Dashboard Quick Actions.........-->
+
+    <div class="mb-4">
+            <a  asp-controller="Books"
+              asp-action="Create"
+              class="btn btn-primary mt-2">
+                ➕ Add Book
+            </a>
+            <a  asp-controller="Members"
+              asp-action="Create"
+              class="btn btn-success mt-2">
+                👤 Add Member
+            </a>
+            <a  asp-controller="Borrows"
+              asp-action="Create"
+              class="btn btn-warning mt-2">
+                 📚 Borrow Book
+            </a>
+            <a  asp-controller="Borrows"
+              asp-action="Index"
+              class="btn btn-info mt-2 text-white">
+                📖 View Borrows
+            </a>
+    </div>
+
+     <!-- # Statistics Cards in code .. Dashboard..........-->
+      @*Total Books*@
+    <div class="row ">
+        <div class="col-md-4 mb-3">
+            <div class="card bg-primary text-white text-center dashboard-card shadow border-0">
+                <div class="card-body py-4">
+                   <div class="">
+                        <span>    
+                             <i class="bi bi-book-fill display-4 mb-2 "></i>
+                        </span>
+                       <h5>Total Books </h5>
+                   </div>
+                    <h2 class="display-5 fw-bold">
+                        @ViewBag.TotalBooks
+                        </h2>
+                </div>
+            </div>
+        </div>
+        @*Total Member----------*@
+        <div class="col-md-4 mb-3">
+            <div class="card bg-success text-white text-center dashboard-card shadow border-0">
+                <div class="card-body py-4">
+                    <h5>Total Members</h5>
+                    <h2 class="display-5 fw-bold">
+                        @ViewBag.TotalMembers
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+         @*Borrow  Books----------*@
+        <div class="col-md-4 mb-3">
+            <div class="card bg-info  text-white text-center dashboard-card shadow border-0">
+                <div class="card-body py-4">
+                    <h5>Borrowed Books</h5>
+                    <h2 class="display-5 fw-bold">
+                        @ViewBag.TotalBorrowed
+                        </h2>
+                </div>
+            </div>
+        </div>
+        @* Return Book------*@
+        <div class="col-md-4 mb-3">
+            <div class="card bg-danger text-white text-center dashboard-card shadow border-0">
+                <div class="card-body py-4 ">
+                    <h5>Retured Books</h5>
+                    <h2 class="display-5 fw-bold">
+                        @ViewBag.TotalReturned
+                        </h2>
+                </div>
+            </div>
+        </div>
+
+
+         @*Over Dud Books................*@
+              <div class="col-md-4 mb-3">
+            <div class="card bg-danger text-white text-center dashboard-card shadow border-0">
+                <div class="card-body py-4 ">
+                    <h5>Total OverDue</h5>
+                    <h2 class="display-5 fw-bold">
+                        @ViewBag.TotalOverDue
+                        </h2>
+                </div>
+            </div>
+        </div>
+
+              @*Avilable Books----------*@
+        <div class="col-md-4 mb-3">
+            <div class="card bg-secondary text-white text-center dashboard-card shadow border-0">
+                <div class="card-body py-4">
+                    <h5 class="">Available Books</h5>
+                    <h2 class="display-5 fw-bold">
+                        @ViewBag.AvailableBooks
+                        </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <hr>
+         @* Dashboard list*@
+      <h4 class="mt-4">Recent Borrow History</h4>
+      <div class="table-responsive rounded overflow-hidden shadow-sm">
+            <table class="table table-bordered table-striped mb-0 text-center">
+             <thead class="table-dark">
+                 <tr class="">
+                     <th class="">Book</th>
+                     <th class="">Member</th>
+                     <th class="">Borrow Date</th>
+                     <th class="">Due Date</th>
+                     <th class="">Status</th>
+                 </tr>
+             </thead>
+
+             <tbody>
+                @foreach(var item in Model)
+                 {
+                    <tr>
+                        <td>@item.Book?.Title</td>
+                        <td>@item.Member?.Name</td>
+                        <td>@item.BorrowDate.ToShortDateString()</td>
+                        <td>@item.DueDate.ToShortDateString()</td>
+                       <td>
+                           @if (item.ReturnDate != null)
+                                {
+                                    <span class="badge bg-success">
+                                        Returned
+                                    </span>
+                                }
+                                else if (item.DueDate < DateTime.Today)
+                                {
+                                    <span class="badge bg-danger">
+                                        Overdue
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        Borrowed
+                                    </span>
+                                }
+                      </td>
+                    </tr>
+
+                 }
+             </tbody>
+         </table>
+      </div>
+
+
+      @*Dashboard Button*@
+
+        <div class="text-end mt-3">
+            <a asp-controller="Borrows"
+                asp-action="Index"
+                class="btn btn-outline-primary h4">
+                📖 View All Borrows →
+            </a>
+        </div>
+
+      
+
+
+
+
+
+
+
+
+

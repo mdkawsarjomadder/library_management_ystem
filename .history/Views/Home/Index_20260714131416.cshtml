@@ -1,0 +1,287 @@
+﻿   
+
+     @model IEnumerable<LibraryManagementSystem.Models.Borrow>
+    @{
+        ViewData["Title"] = "Dashboard";
+    }  
+
+    <div class="mt-2 pt-2">
+         <h2 class="fw-bold"> 
+           📚 Library Management Dashboard
+         </h2>
+         <p class="text-muted">
+                Welcome to the Library Management Dashboard
+         </p>
+    </div>
+       <!-- #Dashboard Quick Actions.........-->
+
+    <div class="mb-4">
+            <a  asp-controller="Books"
+              asp-action="Create"
+              class="btn btn-primary mt-2">
+                ➕ Add Book
+            </a>
+            <a  asp-controller="Members"
+              asp-action="Create"
+              class="btn btn-success mt-2">
+                👤 Add Member
+            </a>
+            <a  asp-controller="Borrows"
+              asp-action="Create"
+              class="btn btn-warning mt-2">
+                 📚 Borrow Book
+            </a>
+            <a  asp-controller="Borrows"
+              asp-action="Index"
+              class="btn btn-info mt-2 text-white">
+                📖 View Borrows
+            </a>
+    </div>
+
+     <!-- # Statistics Cards in code .. Dashboard..........-->
+      @*Total Books*@
+   <div class="row">
+
+    <!-- Total Books -->
+    <div class="col-md-4 mb-3">
+        <div class="card bg-primary text-white dashboard-card shadow border-0">
+            <div class="card-body text-center py-4">
+
+                <div class="d-flex justify-content-center align-items-center mb-3">
+                    <i class="bi bi-book dashboard-icon me-2"></i>
+                    <h5 class="mb-0 fw-bold">Total Books</h5>
+                </div>
+
+                <h2 class="display-5 fw-bold">@ViewBag.TotalBooks</h2>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Members -->
+    <div class="col-md-4 mb-3">
+        <div class="card bg-success text-white dashboard-card shadow border-0">
+            <div class="card-body text-center py-4">
+
+                <div class="d-flex justify-content-center align-items-center mb-3">
+                    <i class="bi bi-people-fill dashboard-icon me-2"></i>
+                    <h5 class="mb-0 fw-bold">Total Members</h5>
+                </div>
+
+                <h2 class="display-5 fw-bold">@ViewBag.TotalMembers</h2>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Borrowed Books -->
+    <div class="col-md-4 mb-3">
+        <div class="card bg-info text-white dashboard-card shadow border-0">
+            <div class="card-body text-center py-4">
+
+                <div class="d-flex justify-content-center align-items-center mb-3">
+                    <i class="bi bi-arrow-left-right dashboard-icon me-2"></i>
+                    <h5 class="mb-0 fw-bold">Borrowed Books</h5>
+                </div>
+
+                <h2 class="display-5 fw-bold">@ViewBag.TotalBorrowed</h2>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Returned Books -->
+    <div class="col-md-4 mb-3">
+        <div class="card bg-danger text-white dashboard-card shadow border-0">
+            <div class="card-body text-center py-4">
+
+                <div class="d-flex justify-content-center align-items-center mb-3">
+                    <i class="bi bi-check2-circle dashboard-icon me-2"></i>
+                    <h5 class="mb-0 fw-bold">Returned Books</h5>
+                </div>
+
+                <h2 class="display-5 fw-bold">@ViewBag.TotalReturned</h2>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Total OverDue -->
+    <div class="col-md-4 mb-3">
+        <div class="card bg-warning text-dark dashboard-card shadow border-0">
+            <div class="card-body text-center py-4">
+
+                <div class="d-flex justify-content-center align-items-center mb-3">
+                    <i class="bi bi-exclamation-triangle-fill dashboard-icon me-2"></i>
+                    <h5 class="mb-0 fw-bold">Total OverDue</h5>
+                </div>
+
+                <h2 class="display-5 fw-bold">@ViewBag.TotalOverDue</h2>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Available Books -->
+    <div class="col-md-4 mb-3">
+        <div class="card bg-secondary text-white dashboard-card shadow border-0">
+            <div class="card-body text-center py-4">
+
+                <div class="d-flex justify-content-center align-items-center mb-3">
+                    <i class="bi bi-book-half dashboard-icon me-2"></i>
+                    <h5 class="mb-0 fw-bold">Available Books</h5>
+                </div>
+
+                <h2 class="display-5 fw-bold">@ViewBag.AvailableBooks</h2>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+       <hr>
+         <!--DashBoard in a chart box-->
+
+         <div class="card shadow border-0 mb-0">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">
+                    📊 Library Statistics
+                </h5>
+            </div>
+            <div class="card-body">
+                 <canvas class="" id="ChartBorrowed"></canvas>
+            </div>
+
+         </div>
+      <hr>
+         @* Dashboard list*@
+      <h4 class="mt-4">Recent Borrow History</h4>
+      <div class="table-responsive rounded overflow-hidden shadow-sm">
+            <table class="table table-bordered table-striped mb-0 text-center">
+             <thead class="table-dark">
+                 <tr class="">
+                     <th class="">Book</th>
+                     <th class="">Member</th>
+                     <th class="">Borrow Date</th>
+                     <th class="">Due Date</th>
+                     <th class="">Status</th>
+                 </tr>
+             </thead>
+
+             <tbody>
+                @foreach(var item in Model)
+                 {
+                    <tr>
+                        <td>@item.Book?.Title</td>
+                        <td>@item.Member?.Name</td>
+                        <td>@item.BorrowDate.ToShortDateString()</td>
+                        <td>@item.DueDate.ToShortDateString()</td>
+                       <td>
+                           @if (item.ReturnDate != null)
+                                {
+                                    <span class="badge bg-success">
+                                        Returned
+                                    </span>
+                                }
+                                else if (item.DueDate < DateTime.Today)
+                                {
+                                    <span class="badge bg-danger">
+                                        Overdue
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        Borrowed
+                                    </span>
+                                }
+                      </td>
+                    </tr>
+
+                 }
+             </tbody>
+         </table>
+      </div>
+
+
+      @*Dashboard Button*@
+
+                <div class="text-end mt-3">
+                    <a asp-controller="Borrows"
+                        asp-action="Index"
+                        class="btn btn-outline-primary h4">
+                        📖 View All Borrows →
+                    </a>
+                </div>
+
+            <!-- # Dashboard Chart -->
+            @section Scripts{
+
+        <script>
+
+        const c_box = document.getElementById('ChartBorrowed');
+
+        new Chart(c_box, {
+
+            type: 'doughnut',
+
+            data: {
+
+                labels: [
+
+                    'Borrowed',
+                    'Returned',
+                    'OverDue'
+
+                ],
+
+                datasets: [{
+
+                    data: [
+
+                        @ViewBag.ChartBorrowed,
+                        @ViewBag.ChartReturned,
+                        @ViewBag.ChartOverDue
+
+                    ],
+
+                    backgroundColor: [
+
+                        '#0dcaf0',
+                        '#198754',
+                        '#dc3545'
+
+                    ],
+
+                    borderWidth: 2
+
+                }]
+            },
+
+            options: {
+
+            responsive: true,
+            maintainAspectRatio: false,
+
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+
+            }
+
+        });
+
+        </script>
+
+        }
+
+
+
+
+
+
+
+
+
