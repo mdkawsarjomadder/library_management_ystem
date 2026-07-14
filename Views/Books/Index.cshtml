@@ -33,7 +33,14 @@
 <p>Welcome to Library Management system</p>
 
     <p>
-        <a asp-action= "Create" class="btn btn-primary mb-3"> ➕ Add New Book</a>
+        <a asp-action= "Create" 
+            class="btn btn-primary mb-3">
+             ➕ Add New Book
+             </a>
+        <a  asp-action="ExportToExcel" 
+            class="btn btn-success mb-3 ms-2">
+               📥 Export Excel
+             </a>
     </p>
 
 <table class="table table-bordered table-striped table-dark text-center">

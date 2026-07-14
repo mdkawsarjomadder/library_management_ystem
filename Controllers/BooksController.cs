@@ -1,8 +1,12 @@
+using System.IO;
+using System.Drawing;
 using LibraryManagementSystem.Data;
 using LibraryManagementSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
 
 namespace LibraryManagementSystem.Controllers
 {
@@ -153,15 +157,83 @@ namespace LibraryManagementSystem.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var book = await _context.Books.FindAsync(id);
+            var books = await _context.Books.FindAsync(id);
 
-            if (book != null)
+            if (books != null)
             {
-                _context.Books.Remove(book);
+                _context.Books.Remove(books);
                 await _context.SaveChangesAsync();
             }
 
             return RedirectToAction(nameof(Index));
         }
+  
+     
+    //BooksController in a ExportExcel Cretate ............|
+
+        public IActionResult ExportToExcel()
+    {
+        // EPPlus 8 License
+        ExcelPackage.License.SetNonCommercialPersonal("Your Name");
+
+        // Load related data
+        var books = _context.Books
+            .Include(b => b.Author)
+            .Include(b => b.Category)
+            .ToList();
+
+        using (var package = new ExcelPackage())
+        {
+            var workSheet = package.Workbook.Worksheets.Add("Books");
+
+            // Header
+            workSheet.Cells[1, 1].Value = "ID";
+            workSheet.Cells[1, 2].Value = "Title";
+            workSheet.Cells[1, 3].Value = "Author";
+            workSheet.Cells[1, 4].Value = "Category";
+            workSheet.Cells[1, 5].Value = "Total Copies";
+            workSheet.Cells[1, 6].Value = "Available Copies";
+
+            // Header Style
+            using (var range = workSheet.Cells[1, 1, 1, 6])
+            {
+                range.Style.Font.Bold = true;
+                range.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                range.Style.Fill.BackgroundColor.SetColor(Color.DarkBlue);
+                range.Style.Font.Color.SetColor(Color.White);
+            }
+
+            // Data
+            int row = 2;
+
+            foreach (var book in books)
+            {
+                workSheet.Cells[row, 1].Value = book.Id;
+                workSheet.Cells[row, 2].Value = book.Title;
+                workSheet.Cells[row, 3].Value = book.Author?.Name;
+                workSheet.Cells[row, 4].Value = book.Category?.Name;
+                workSheet.Cells[row, 5].Value = book.TotalCopies;
+                workSheet.Cells[row, 6].Value = book.AvailableCopies;
+
+                row++;
+            }
+
+            // Auto fit columns
+            workSheet.Cells.AutoFitColumns();
+
+            // Save to MemoryStream
+            var stream = new MemoryStream();
+            package.SaveAs(stream);
+            stream.Position = 0;
+
+            string fileName = $"Books_{DateTime.Now:yyyyMMddHHmmss}.xlsx";
+
+            return File(
+                stream,
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                fileName);
+        }
     }
-}
+        }  // public End
+
+ }

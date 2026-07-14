@@ -224,8 +224,8 @@ D:\D_Net\LibraryManagementSystem\obj\Debug\net10.0\LibraryManagementSystem.genru
 D:\D_Net\LibraryManagementSystem\obj\Debug\net10.0\ref\LibraryManagementSystem.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\appsettings.Development.json
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\appsettings.json
-D:\D_Net\library_management_ystem\bin\Debug\net10.0\LibraryManagementSystem.staticwebassets.endpoints.json
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\LibraryManagementSystem.staticwebassets.runtime.json
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\LibraryManagementSystem.staticwebassets.endpoints.json
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\LibraryManagementSystem.exe
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\LibraryManagementSystem.deps.json
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\LibraryManagementSystem.runtimeconfig.json
@@ -233,6 +233,8 @@ D:\D_Net\library_management_ystem\bin\Debug\net10.0\LibraryManagementSystem.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\LibraryManagementSystem.pdb
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Azure.Core.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Azure.Identity.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\EPPlus.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\EPPlus.Interfaces.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Humanizer.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Microsoft.Bcl.Cryptography.dll
@@ -258,6 +260,7 @@ D:\D_Net\library_management_ystem\bin\Debug\net10.0\Microsoft.IdentityModel.Logg
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\Microsoft.IO.RecyclableMemoryStream.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Microsoft.SqlServer.Server.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Microsoft.VisualStudio.SolutionPersistence.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Mono.TextTemplating.dll
@@ -365,12 +368,14 @@ D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.cspr
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.MvcApplicationPartsAssemblyInfo.cache
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.RazorAssemblyInfo.cache
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.RazorAssemblyInfo.cs
+D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.sourcelink.json
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\rjimswa.dswa.cache.json
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\scopedcss\bundle\LibraryManagementSystem.styles.css
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\scopedcss\projectbundle\LibraryManagementSystem.bundle.scp.css
+D:\D_Net\library_management_ystem\obj\Debug\net10.0\compressed\wadqovfpf4-{0}-6ackbunuve-6ackbunuve.gz
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\compressed\xcjc30fb65-{0}-61n19gt1b8-61n19gt1b8.gz
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\compressed\ce6dsg7zx7-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\compressed\v6rmf15oqo-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -445,5 +450,3 @@ D:\D_Net\library_management_ystem\obj\Debug\net10.0\refint\LibraryManagementSyst
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.pdb
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.genruntimeconfig.cache
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\ref\LibraryManagementSystem.dll
-D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.sourcelink.json
-D:\D_Net\library_management_ystem\obj\Debug\net10.0\compressed\wadqovfpf4-{0}-6ackbunuve-6ackbunuve.gz
