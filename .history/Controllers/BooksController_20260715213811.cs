@@ -277,104 +277,57 @@ namespace LibraryManagementSystem.Controllers
                   
                 table.ColumnsDefinition(columns =>
                 {
-
-                        columns.ConstantColumn(40); //id
-                        columns.RelativeColumn(4); //Title
-                        columns.RelativeColumn(3); //Author
-                        columns.RelativeColumn(3); //Category
-                        columns.ConstantColumn(70); // total
-                        columns.ConstantColumn(80); //Acilable
-             
+                    columns.ConstantColumn(50);   // ID
+                    columns.RelativeColumn(4);    // Title
+                    columns.RelativeColumn(3);    // Author
+                    columns.RelativeColumn(3);    // Category
+                    columns.ConstantColumn(80);   // Total
+                    columns.ConstantColumn(80);   // Available
                 });
 
                 // Header
-               table.Header(header =>
-{
-    // ID
-    header.Cell()
-        .Border(1)
-        .Background("#212529")   // Bootstrap Dark
-        .PaddingVertical(8)
-        .PaddingHorizontal(6)
-        .AlignCenter()
-        .AlignMiddle()
-        .Text("ID")
-        .FontColor(Colors.White)
-        .Bold();
+                table.Header(header =>
+                {
+                    header.Cell().Border(1).Background(Colors.Blue.Darken2)
+                        .Padding(5).Text("ID").FontColor(Colors.White).Bold();
 
-    // Title
-    header.Cell()
-        .Border(1)
-        .Background("#212529")
-        .PaddingVertical(8)
-        .PaddingHorizontal(6)
-        .Text("Title")
-        .FontColor(Colors.White)
-        .Bold();
+                    header.Cell().Border(1).Background(Colors.Blue.Darken2)
+                        .Padding(5).Text("Title").FontColor(Colors.White).Bold();
 
-    // Author
-    header.Cell()
-        .Border(1)
-        .Background("#212529")
-        .PaddingVertical(8)
-        .PaddingHorizontal(6)
-        .Text("Author")
-        .FontColor(Colors.White)
-        .Bold();
+                    header.Cell().Border(1).Background(Colors.Blue.Darken2)
+                        .Padding(5).Text("Author").FontColor(Colors.White).Bold();
 
-    // Category
-            header.Cell()
-                .Border(1)
-                .Background("#212529")
-                .PaddingVertical(8)
-                .PaddingHorizontal(6)
-                .Text("Category")
-                .FontColor(Colors.White)
-                .Bold();
+                    header.Cell().Border(1).Background(Colors.Blue.Darken2)
+                        .Padding(5).Text("Category").FontColor(Colors.White).Bold();
 
-            // Total
-            header.Cell()
-                .Border(1)
-                .Background("#212529")
-                .PaddingVertical(8)
-                .PaddingHorizontal(6)
-                .AlignCenter()
-                .Text("Total")
-                .FontColor(Colors.White)
-                .Bold();
+                    header.Cell().Border(1).Background(Colors.Blue.Darken2)
+                        .Padding(5).Text("Total").FontColor(Colors.White).Bold();
 
-            // Available
-            header.Cell()
-                .Border(1)
-                .Background("#212529")
-                .PaddingVertical(8)
-                .PaddingHorizontal(6)
-                .AlignCenter()
-                .Text("Available")
-                .FontColor(Colors.White)
-                .Bold();
-        });
+                    header.Cell().Border(1).Background(Colors.Blue.Darken2)
+                        .Padding(5).Text("Available").FontColor(Colors.White).Bold();
+                });
+
                 // Data
-               
-        int serial = 1;
+                foreach (var book in books)
+                {
+                    table.Cell().AlignCenter() .Border(1).Padding(5).Text(book.Id.ToString());
 
-            foreach (var book in books)
-            {
-                table.Cell().Border(1).Padding(5).AlignCenter().Text(serial.ToString());
+                    table.Cell().Border(1).Padding(5).Text(book.Title);
 
-                table.Cell().Border(1).Padding(5).Text(book.Title);
+                    table.Cell().Border(1).Padding(5)
+                        .Text(book.Author?.Name ?? "");
 
-                table.Cell().Border(1).Padding(5).Text(book.Author?.Name ?? "");
+                    table.Cell().Border(1).Padding(5)
+                        .Text(book.Category?.Name ?? "");
 
-                table.Cell().Border(1).Padding(5).Text(book.Category?.Name ?? "");
+                    table.Cell().Border(1).Padding(5)
+                        .AlignCenter()
+                        .Text(book.TotalCopies.ToString());
 
-                table.Cell().Border(1).Padding(5).AlignCenter().Text(book.TotalCopies.ToString());
-
-                table.Cell().Border(1).Padding(5).AlignCenter().Text(book.AvailableCopies.ToString());
-
-            serial++;
-            }
-
+                    table.Cell().Border(1).Padding(5)
+                        .AlignCenter()
+                        .Text(book.AvailableCopies.ToString());
+                }
             });
 
             // Footer and Date add....

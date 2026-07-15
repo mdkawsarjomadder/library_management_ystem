@@ -356,25 +356,26 @@ namespace LibraryManagementSystem.Controllers
         });
                 // Data
                
-        int serial = 1;
+                foreach (var book in books)
+                {
+                    table.Cell().AlignCenter() .Border(1).Padding(5).Text(book.Id.ToString());
 
-            foreach (var book in books)
-            {
-                table.Cell().Border(1).Padding(5).AlignCenter().Text(serial.ToString());
+                    table.Cell().Border(1).Padding(5).Text(book.Title);
 
-                table.Cell().Border(1).Padding(5).Text(book.Title);
+                    table.Cell().Border(1).Padding(5)
+                        .Text(book.Author?.Name ?? "");
 
-                table.Cell().Border(1).Padding(5).Text(book.Author?.Name ?? "");
+                    table.Cell().Border(1).Padding(5)
+                        .Text(book.Category?.Name ?? "");
 
-                table.Cell().Border(1).Padding(5).Text(book.Category?.Name ?? "");
+                    table.Cell().Border(1).Padding(5)
+                        .AlignCenter()
+                        .Text(book.TotalCopies.ToString());
 
-                table.Cell().Border(1).Padding(5).AlignCenter().Text(book.TotalCopies.ToString());
-
-                table.Cell().Border(1).Padding(5).AlignCenter().Text(book.AvailableCopies.ToString());
-
-            serial++;
-            }
-
+                    table.Cell().Border(1).Padding(5)
+                        .AlignCenter()
+                        .Text(book.AvailableCopies.ToString());
+                }
             });
 
             // Footer and Date add....

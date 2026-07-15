@@ -360,17 +360,13 @@ namespace LibraryManagementSystem.Controllers
 
             foreach (var book in books)
             {
-                table.Cell().Border(1).Padding(5).AlignCenter().Text(serial.ToString());
+                table.Cell().Text(serial.ToString());
 
-                table.Cell().Border(1).Padding(5).Text(book.Title);
-
-                table.Cell().Border(1).Padding(5).Text(book.Author?.Name ?? "");
-
-                table.Cell().Border(1).Padding(5).Text(book.Category?.Name ?? "");
-
-                table.Cell().Border(1).Padding(5).AlignCenter().Text(book.TotalCopies.ToString());
-
-                table.Cell().Border(1).Padding(5).AlignCenter().Text(book.AvailableCopies.ToString());
+                table.Cell().Text(book.Title);
+                table.Cell().Text(book.Author?.Name ?? "");
+                table.Cell().Text(book.Category?.Name ?? "");
+                table.Cell().Text(book.TotalCopies.ToString());
+                table.Cell().Text(book.AvailableCopies.ToString());
 
             serial++;
             }
