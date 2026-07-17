@@ -1,0 +1,166 @@
+   @model IEnumerable<LibraryManagementSystem.Models.Borrow>
+    @{
+        ViewData["Title"] = "Borrow List";
+    }
+
+      <!-- Borrow Book -->
+        <div class="d-flex justify-content-between align-items-center mb-4 mt-3">
+            <div>
+                <h2 class="fw-bold mb-1">
+                    📖 Borrow Management
+                </h2>
+                <p class="text-muted mb-0">
+                    Manage borrowed books.
+                </p>
+            </div>
+
+            <a asp-action="Create" class="btn btn-warning text-dark">
+                <i class="bi bi-plus-circle"></i> Borrow Book
+            </a>
+        </div>
+
+
+    <h1>@ViewData["Title"]</h1>
+        <!-- # Search Form Create -->
+       <form asp-controller="Borrows" 
+            asp-action="Index"
+            method="get"
+            class="row g-2 mb-3 " >
+
+        <div class="col-md-4">
+            <input type="text"
+            name="searchString"
+            value="@ViewBag.SearchString"
+            class="form-control"
+            placeholder="🔍 Search by Book or Member."
+            >
+        </div>
+
+        <div class="col-auto">
+             <button type="submit" class="btn btn-primary">
+                🔍Search
+             </button>
+        </div>
+        <div class="col-auto">
+            <a asp-action="Index" class="btn btn-secondary">
+                Reset
+            </a>
+        </div>
+     </form>
+  
+    <p>
+        <a asp-action="Create" class="btn btn-primary">
+          ➕ Borrow New Book
+        </a>
+    </p>
+
+     <table class="table  table-bordered table-striped text-center rounded overflow-hidden">
+            <thead class="table-dark">
+                    <tr class="text-center">
+                         <th class="">Book</th>
+                         <th class="">Member</th>
+                         <th class="">Borrow Date</th>
+                         <th class="">Due Date</th>
+                         <th class="">Status</th>
+                         <th class="">Action</th>
+                    </tr>
+            </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Book?.Title</td>
+                    <td>@item.Member?.Name</td>
+                    <td>@item.BorrowDate.ToShortDateString()</td>
+                    <td>@item.DueDate.ToShortDateString()</td>
+                    <td>
+                    @if(item.ReturnDate == null)
+                    {
+                        if(item.DueDate < DateTime.Now)
+                        {
+                            <span class="badge bg-danger">
+                            Overdue
+                            </span>
+                            }
+                        else
+                        {
+                            <span class="badge bg-warning text-dark">
+                            Borrowed
+                            </span>
+                        }
+                        }
+                        else
+                        {
+                        <span class="badge bg-success">
+                        Returned
+                        </span>
+                    }
+                    </td>
+             
+
+                <!-- #Action -->
+
+                <td>
+                    @if(item.ReturnDate  == null)
+                    {
+                        <a asp-action="Return" 
+                        asp-route-id="@item.Id"
+                        class="btn btn-success btn-sm">
+                            Return
+                        </a>
+                    }
+                    else
+                    {
+                        <span class="text-success">
+                            Returned
+                        </span>
+                    }
+                </td>
+              </tr>
+            }
+        </tbody>
+     </table>
+
+    <!-- #Pagination Create----------------- -->
+ <div class="mt-4">
+    <ul class="pagination justify-content-center">
+
+        <!-- Previous -->
+        <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+            <a class="page-link"
+               asp-action="Index"
+               asp-route-page="@(ViewBag.CurrentPage - 1)"
+               asp-route-searchString="@ViewBag.SearchString">
+                Previous
+            </a>
+        </li>
+
+        <!-- Page Numbers -->
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                <a class="page-link"
+                   asp-action="Index"
+                   asp-route-page="@i"
+                   asp-route-searchString="@ViewBag.SearchString">
+                    @i
+                </a>
+            </li>
+        }
+
+        <!-- Next -->
+        <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+            <a class="page-link"
+               asp-action="Index"
+               asp-route-page="@(ViewBag.CurrentPage + 1)"
+               asp-route-searchString="@ViewBag.SearchString">
+                Next
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+
+  

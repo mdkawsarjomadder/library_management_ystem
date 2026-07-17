@@ -1,0 +1,99 @@
+
+   @model IEnumerable<LibraryManagementSystem.Models.Member>
+    @{
+        ViewData["Title"] = "Member List";
+    }
+
+     <!-- # Add a Members -->
+    <div class="d-flex justify-content-between align-items-center mb-4 mt-3">
+        <div>
+            <h2 class="fw-bold mb-1">
+                👤 Members Management
+            </h2>
+            <p class="text-muted fs-5 mb-3 ms-5">
+                Manage library members.
+            </p>
+        </div>
+
+        <a asp-action="Create" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Add Member
+        </a>
+   </div>
+
+   <!-- #Search Button Create --    --------------------------->
+      <form 
+        method="get" 
+        class="row g-2 mb-3 pt-2">
+
+    <div class="col-md-4">
+        <input type="text"
+               name="searchString"
+               value="@ViewBag.SearchString"
+               class="form-control"
+               placeholder="🔍 Search by Name or Email..." />
+    </div>
+
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary">
+            Search
+        </button>
+    </div>
+
+    <div class="col-auto">
+        <a asp-action="Index" class="btn btn-secondary">
+            Reset
+        </a>
+    </div>
+
+</form>
+   
+    <p>
+      <h1>Member List</h1>
+    </p>
+
+    <table class="table table-bordered  table-striped rounded overflow-hidden">
+          <thead class="table-dark">
+             <tr class="text-white text-center">
+                 <th>Name</th>
+                 <th>Email</th>
+                 <th>Phone</th>
+                 <th>Address</th>
+                 <th>Action</th>
+
+             </tr>
+          </thead>
+
+          <tbody>
+
+       
+
+    @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.Phone</td>
+                <td>@item.Address</td>
+                <!-- Edit and Delete function -->
+                <td class="text-center">
+                    <!-- #Edit-->
+                <a asp-action="Edit" 
+                    asp-route-id="@item.Id"
+                    class="btn btn-warning btn-sm">
+                     <i class="bi bi-pencil-square"></i>
+                      Edit
+                </a>
+                <!-- Delete -->
+            <a asp-action="Delete"
+                asp-route-id="@item.Id"
+                class="btn btn-danger btn-sm">
+                <i class="bi bi-trash"></i>
+                    Delete
+            </a>
+                </td>
+            </tr>
+
+        }
+         </tbody>
+
+    </table>

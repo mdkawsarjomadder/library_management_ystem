@@ -1,0 +1,145 @@
+html{
+    font-size:14px;
+    min-height:100%;
+}
+
+@media (min-width:768px){
+    html{
+        font-size:16px;
+    }
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    padding-top:72px;
+    overflow-y:scroll;
+}
+
+main{
+    flex:1;
+}
+
+footer{
+    background:#212529;
+    color:#fff;
+}
+
+/* Bootstrap Focus */
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus{
+    box-shadow:0 0 0 .1rem #fff,
+               0 0 0 .25rem #258cfb;
+}
+
+/* Floating Placeholder */
+
+.form-floating>.form-control-plaintext::placeholder,
+.form-floating>.form-control::placeholder{
+    color:var(--bs-secondary-color);
+    text-align:end;
+}
+
+.form-floating>.form-control-plaintext:focus::placeholder,
+.form-floating>.form-control:focus::placeholder{
+    text-align:start;
+}
+
+/* ==========================
+        NAVBAR
+========================== */
+
+.navbar{
+    padding:10px 0;
+}
+
+.navbar-brand{
+    font-size:1.5rem;
+    font-weight:700;
+    letter-spacing:.5px;
+}
+
+.navbar-nav{
+    gap:6px;
+}
+
+.navbar .nav-link{
+    color:#ffffff !important;
+    padding:8px 16px;
+    border-radius:8px;
+    font-weight:600;
+    white-space:nowrap;
+    transition:background-color .2s ease,color .2s ease;
+}
+
+.navbar .nav-link:hover{
+    background:#495057;
+    color:#ffc107 !important;
+}
+
+.navbar .nav-link.active{
+    background:#ffc107;
+    color:#212529 !important;
+}
+
+
+/* Dashboard Card */
+
+.dashboard-card{
+    border-radius:15px;
+    transition:all .3s ease;
+    cursor:pointer;
+}
+
+.dashboard-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 25px rgba(0,0,0,.25);
+}
+
+
+/*-- Dashboard card in a code >*/
+
+
+.dashboard-card{
+    border-radius:15px;
+    transition:0.3s ease;
+}
+
+.dashboard-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 25px rgba(0,0,0,.25);
+}
+
+.dashboard-icon{
+    font-size:40px;
+    width:45px;
+    text-align:center;
+}
+
+.dashboard-card h5{
+    margin:0;
+    font-weight:600;
+}
+
+
+/*Welcome to library management syestem animistion*/
+
+.rotate-text{
+    display: inline-block; /* rotate কাজ করার জন্য */
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
