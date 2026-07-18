@@ -1,0 +1,47 @@
+
+@model LibraryManagementSystem.Models.Book
+@{
+    ViewData["Title"] = "Details";
+}
+
+    <h1 class="mb-4" > 
+        @ViewData["Title"]
+    </h1>
+
+
+        <div class="card-header bg-primary text-white fw-bold">
+          <i class="bi bi-book-half"></i> Book Details
+        </div>
+
+                    @*book list start*@ 
+         <table class="table table-bordered table-striped mb-0">
+            <tr>
+                <th width="220">Title</th>
+                <td>@Model.Title</td>
+            </tr>
+
+            <tr>
+                <th>Author</th>
+                <td>@Model.Author?.Name</td>
+            </tr>
+
+            <tr>
+                <th>Category</th>
+                <td>@Model.Category?.Name</td>
+            </tr>
+
+            <tr>
+                <th>Publisher</th>
+                <td>@Model.Publisher?.Name</td>
+            </tr>
+
+            <tr>
+                <th>Total Copies</th>
+                <td>@Model.TotalCopies</td>
+            </tr>
+
+            <tr>
+                <th>Available Copies</th>
+                <td>@Model.AvailableCopies</td>
+            </tr>
+        </table>

@@ -1,0 +1,55 @@
+
+@model LibraryManagementSystem.Models.Member
+@{
+    ViewData["Title"] = " Member Details";
+}
+
+    <h2 class="mb-4">
+    @ViewData["Title"]
+    </h2>
+
+    <div class="col-md-6 shadow rounded-3">
+         <div class="card-header bg-warning mt-3 h2 rounded-top fw-bold">
+            <i class="bi bi-person-fill me-2 ms-2"></i>
+        <span class="fw-semibold fs-5">Member Details</span>
+         </div>
+
+         <table class="table table-bordered table-striped mb-0">
+             <tr class="">
+                <th width="220" class="">Name</th>
+                <td class="">@Model.Name</td>
+             </tr>
+
+             <tr class="">
+                <th class="">Email</th>
+                <td class="">@Model.Email</td>
+             </tr>
+
+             <tr class="">
+                <th class="">Phone</th>
+                <td class="">@Model.Phone</td>
+             </tr>
+
+             <tr class="">
+                <th class="">Address</th>
+                <td class="">@Model.Address</td>
+             </tr>
+
+         </table>
+
+         <div class="card-footer text-center text-end my-2">
+               <a asp-action="Edit"
+                     asp-route-id="@Model.Id" 
+                     class="btn btn-warning px-4 py-2 fs-5">
+                    <i class="bi bi-pencil-square"></i>
+                     Edit
+               </a>
+
+               <a asp-action="Index"
+                 class="btn btn-secondary px-4 py-2 fs-5">
+                 <i class="bi bi-arrow-left"></i>
+                    Back
+               </a>
+         </div>
+        
+    </div>

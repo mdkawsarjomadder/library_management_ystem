@@ -1,0 +1,70 @@
+
+@model LibraryManagementSystem.Models.Book
+@{
+    ViewData["Title"] = "Details";
+}
+
+    <h1 class="mb-4" > 
+        @ViewData["Title"]
+    </h1>
+
+        <div class="col-md-6">
+
+        <div class="card-header bg-secondary mt-3 h2 text-warning rounded-top fw-bold">
+          <i class="bi bi-book-half ms-2"></i> Book Details
+        </div>
+
+                    @*book list start*@ 
+
+         <table class="table table-bordered table-striped mb-0">
+            <tr>
+                <th width="220">Title</th>
+                <td>@Model.Title</td>
+            </tr>
+
+            <tr>
+                <th>Author</th>
+                <td>@Model.Author?.Name</td>
+            </tr>
+
+            <tr>
+                <th>Category</th>
+                <td>@Model.Category?.Name</td>
+            </tr>
+
+            <tr>
+                <th>Publisher</th>
+                <td>@Model.Publisher?.Name</td>
+            </tr>
+
+            <tr>
+                <th>Total Copies</th>
+                <td>@Model.TotalCopies</td>
+            </tr>
+
+            <tr>
+                <th>Available Copies</th>
+                <td>@Model.AvailableCopies</td>
+            </tr>
+        </table>
+
+
+    <div class="card-footer text-center text-end my-2">
+
+        <a asp-action="Edit"
+        asp-route-id="@Model.Id"
+        class="btn btn-warning">
+
+            <i class="bi bi-pencil-square"></i>
+            Edit
+        </a>
+
+        <a asp-action="Index"
+        class="btn btn-secondary">
+
+            <i class="bi bi-arrow-left"></i>
+            Back
+        </a>
+
+      </div>
+    </div>

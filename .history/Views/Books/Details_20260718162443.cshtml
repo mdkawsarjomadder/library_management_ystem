@@ -1,0 +1,69 @@
+
+@model LibraryManagementSystem.Models.Book
+@{
+    ViewData["Title"] = "Details";
+}
+
+    <h2 class="mb-4" > 
+        @ViewData["Title"]
+    </h2>
+
+      <div class="col-lg-8 col-md-6 mx-auto fs-2">
+         <div class="card-header bg-warning text-dark rounded-top py-3">
+          <i class="bi bi-book-half ms-2"></i>
+          <span class="fw-semibold fs-5"> Book Details</span>
+        </div>
+
+                    @*book list start*@ 
+
+         <table class="table table-bordered table-striped mb-0">
+            <tr>
+                <th width="220">Title</th>
+                <td>@Model.Title</td>
+            </tr>
+
+            <tr>
+                <th>Author</th>
+                <td>@Model.Author?.Name</td>
+            </tr>
+
+            <tr>
+                <th>Category</th>
+                <td>@Model.Category?.Name</td>
+            </tr>
+
+            <tr>
+                <th>Publisher</th>
+                <td>@Model.Publisher?.Name</td>
+            </tr>
+
+            <tr>
+                <th>Total Copies</th>
+                <td>@Model.TotalCopies</td>
+            </tr>
+
+            <tr>
+                <th>Available Copies</th>
+                <td>@Model.AvailableCopies</td>
+            </tr>
+      
+    </table>
+
+    <div class="card-footer text-center text-end my-2">
+
+        <a asp-action="Edit"
+        asp-route-id="@Model.Id"
+        class="btn btn-warning px-4 py-2 fs-5">
+            <i class="bi bi-pencil-square"></i>
+            Edit
+        </a>
+
+        <a asp-action="Index"
+            class="btn btn-secondary px-4 py-2 fs-5">
+            <i class="bi bi-arrow-left"></i>
+            Back
+        </a>
+
+      
+        </div>
+      </div>

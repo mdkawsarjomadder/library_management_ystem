@@ -1,0 +1,66 @@
+
+@model LibraryManagementSystem.Models.Book
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+         <div class="card shadow ">
+            <div class="card header bg-primary text-white">
+                <h3 class="mb-0">
+                    <i class="bi bi-book"></i>
+                      Book Datails
+                </h3>
+             </div>
+              @*book list start*@ 
+                   <div class="card body"> 
+                      <table class=" ">
+                          <tr class="">
+                                <th width="35%" class="">Title</th>
+                                <td class="">@Model.Title</td>
+                          </tr>
+                          <tr class="">
+                                <th class="">Author</th>
+                                <td class="">@Model.Author?.Name</td>
+                          </tr>
+                          <tr class="">
+                                <th class="">Category</th>
+                                <td class="">@Model.Category?.Name</td>
+                          </tr>
+                          <tr class="">
+                                <th class="">Publisher</th>
+                                <td class="">@Model.Publisher?.Name</td>
+                          </tr>
+                          <tr class="">
+                                <th class="">Total Copies</th>
+                                <td class="">@Model.TotalCopies</td>
+                          </tr>
+                          <tr class="">
+                                <th class="">Available Copies</th>
+                                <td class="">@Model.AvailableCopies</td>
+                          </tr>
+                      </table>
+
+                       <div class="mt-4">
+                           <a asp-action="Index" 
+                              asp-route-id="@Model.Id"
+                              class="btn btn-warning" >
+                                <i class="bi bi-pencil-square"></i>
+                                 Edit
+                              </a>
+
+                              <a asp-action="Index" 
+                              asp-route-id="@Model.Id"
+                              class="btn btn-secondary">
+                               <i class="bi bi-arrow-left"></i>
+                                 Back
+                              </a>
+                       </div>
+                   </div>
+           
+         </div>
+      </div>
+
+  </div>
