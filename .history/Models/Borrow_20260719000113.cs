@@ -36,15 +36,9 @@ namespace LibraryManagementSystem.Models
         public DateTime BorrowDate { get; set; }
 
 
-          //due borrow Date Time......................|
-        [Required(ErrorMessage = "Due Date is required.")]
-        [DataType(DataType.Date)]
-        [Display(Name = "Due Date")]
+        [Required]  //due borrow Date Time......................|
         public DateTime DueDate { get; set; }
 
-
-        [DataType(DataType.Date)]
-        [Display(Name = "Return Date")]
         public DateTime? ReturnDate { get; set; } // null return...............|
 
 

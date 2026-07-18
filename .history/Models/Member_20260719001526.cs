@@ -13,8 +13,7 @@ namespace LibraryManagementSystem.Models
 
         [Required(ErrorMessage = "Member name is required.")]
         [StringLength(100, ErrorMessage = "Name cannot exceed 100 characters.")]
-        [RegularExpression(@"^[A-Za-z\s]+$", ErrorMessage = "Only letters and spaces are allowed.")]
-        [Display(Name = "Name")]
+        [Display(Name = "Member Name")]
         public string Name {get; set;} = string.Empty;
 
 
@@ -24,19 +23,14 @@ namespace LibraryManagementSystem.Models
         public string Email {get; set;} = string.Empty;
 
         [Required(ErrorMessage = "Phone number is required.")]
-        [RegularExpression(@"^01[3-9]\d{8}$",
-        ErrorMessage = "Enter a valid 11-digit Bangladeshi phone number.")]
+        [Phone(ErrorMessage = "Please enter a valid phone number.")]
+        [StringLength(20, ErrorMessage = "Phone number cannot exceed 20 characters.")]
         [Display(Name = "Phone Number")]
         public string Phone {get; set;} = string.Empty;
 
 
         [Required(ErrorMessage = "Address is required.")]
         [StringLength(200, ErrorMessage = "Address cannot exceed 200 characters.")]
-        [RegularExpression(
-        @"^[A-Z][A-Za-z0-9\s,.\-]*$",
-        ErrorMessage = "Address must start with an uppercase letter."
-        )]
-        [Display(Name = "Address")]
         public string Address {get; set;} = string.Empty;
 
 

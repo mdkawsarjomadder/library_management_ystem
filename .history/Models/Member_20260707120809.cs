@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace LibraryManagementSystem.Models
 {
-    public class Publisher
+    public class Member
     {
+        [Key]
         public int Id {get; set;}
 
-        [Required(ErrorMessage = "Publisher name is required.")]
-        [StringLength(100, ErrorMessage = "Publisher name cannot exceed 100 characters.")]
-        [Display(Name = "Publisher Name")]
+        [Required]
         public string Name {get; set;} = string.Empty;
+        public string Email {get; set;} = string.Empty;
+        public string Phone {get; set;} = string.Empty;
+        public string Address {get; set;} = string.Empty;
+
+
+
     }
 }

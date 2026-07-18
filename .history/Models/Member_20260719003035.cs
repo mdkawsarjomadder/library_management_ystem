@@ -14,7 +14,7 @@ namespace LibraryManagementSystem.Models
         [Required(ErrorMessage = "Member name is required.")]
         [StringLength(100, ErrorMessage = "Name cannot exceed 100 characters.")]
         [RegularExpression(@"^[A-Za-z\s]+$", ErrorMessage = "Only letters and spaces are allowed.")]
-        [Display(Name = "Name")]
+        [Display(Name = "Member Name")]
         public string Name {get; set;} = string.Empty;
 
 
@@ -32,11 +32,6 @@ namespace LibraryManagementSystem.Models
 
         [Required(ErrorMessage = "Address is required.")]
         [StringLength(200, ErrorMessage = "Address cannot exceed 200 characters.")]
-        [RegularExpression(
-        @"^[A-Z][A-Za-z0-9\s,.\-]*$",
-        ErrorMessage = "Address must start with an uppercase letter."
-        )]
-        [Display(Name = "Address")]
         public string Address {get; set;} = string.Empty;
 
 

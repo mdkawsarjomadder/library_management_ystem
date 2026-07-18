@@ -87,10 +87,17 @@ namespace LibraryManagementSystem.Controllers
 
         public async Task<IActionResult> Edit(int id, Member member)
         {
+
+            Console.WriteLine($"Phone = '{member.Phone}'");
+            Console.WriteLine($"Email = '{member.Email}'");
+            Console.WriteLine($"ModelState.IsValid = {ModelState.IsValid}");
             if(id != member.Id)
             {
                  return NotFound();
             }
+
+
+
             if (ModelState.IsValid)
             {
                 _context.Update(member);

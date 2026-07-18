@@ -43,7 +43,7 @@
             <select asp-for="CategoryId"
             asp-items="ViewBag.Categories"
             class="form-select">
-            <option value="0">-- Select Category --</option>
+            <option value="">-- Select Category --</option>
             </select>
 
         <span asp-validation-for="CategoryId" class="text-danger"></span>
@@ -58,7 +58,7 @@
         <select asp-for="AuthorId"
         asp-items="ViewBag.Authors"
         class="form-select">
-        <option value="0">-- Select Author --</option>
+        <option value="">-- Select Author --</option>
         </select>
 
             <span asp-validation-for="AuthorId" class="text-danger"></span>
@@ -71,7 +71,7 @@
             <select asp-for="PublisherId"
             asp-items="ViewBag.Publishers"
             class="form-select">
-                <option value="0">-- Select Publisher --</option>
+                <option value="">-- Select Publisher --</option>
             </select>
 
             <span asp-validation-for="PublisherId" class="text-danger"></span>

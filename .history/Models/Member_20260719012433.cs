@@ -32,10 +32,8 @@ namespace LibraryManagementSystem.Models
 
         [Required(ErrorMessage = "Address is required.")]
         [StringLength(200, ErrorMessage = "Address cannot exceed 200 characters.")]
-        [RegularExpression(
-        @"^[A-Z][A-Za-z0-9\s,.\-]*$",
-        ErrorMessage = "Address must start with an uppercase letter."
-        )]
+        [RegularExpression(@"^[A-Za-z0-9\s,.\-]+$",
+        ErrorMessage = "Address contains invalid characters.")]
         [Display(Name = "Address")]
         public string Address {get; set;} = string.Empty;
 

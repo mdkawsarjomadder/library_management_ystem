@@ -11,10 +11,8 @@ namespace LibraryManagementSystem.Models
     {
         [Key]
         public int Id { get; set; }
-
-        [Required] 
-        [Range(1, int.MaxValue, ErrorMessage = "Please select a Book.")]
-        [Display(Name = "Book")]
+         
+         [Required]
         public int BookId { get; set; } // Book_Foreign Key.........!
 
 
@@ -22,29 +20,18 @@ namespace LibraryManagementSystem.Models
         public Book? Book { get; set; }
 
         [Required]   //Member Foreign key..................|
-        [Range(1, int.MaxValue, ErrorMessage = "Please select a Member.")]
-        [Display(Name = "Member")]
         public int MemberId { get; set; }
 
         [ForeignKey("MemberId")]
         public Member? Member { get; set; }
 
-       //borrow Information...........|  
-        [Required(ErrorMessage = "Borrow Date is required.")]
-        [DataType(DataType.Date)]
-        [Display(Name = "Borrow Date")]
+        [Required]  //borrow Information...........|  
         public DateTime BorrowDate { get; set; }
 
 
-          //due borrow Date Time......................|
-        [Required(ErrorMessage = "Due Date is required.")]
-        [DataType(DataType.Date)]
-        [Display(Name = "Due Date")]
+        [Required]  //due borrow Date Time......................|
         public DateTime DueDate { get; set; }
 
-
-        [DataType(DataType.Date)]
-        [Display(Name = "Return Date")]
         public DateTime? ReturnDate { get; set; } // null return...............|
 
 

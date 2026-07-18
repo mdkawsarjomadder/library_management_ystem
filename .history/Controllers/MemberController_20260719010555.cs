@@ -84,22 +84,34 @@ namespace LibraryManagementSystem.Controllers
         // POST: Members/Edit/1................................||
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public async Task<IActionResult> Edit(int id, Member member)
         {
-            if(id != member.Id)
+            if (id != member.Id)
             {
-                 return NotFound();
+                return NotFound();
             }
-            if (ModelState.IsValid)
+
+            Console.WriteLine($"Phone = '{member.Phone}'");
+            Console.WriteLine($"Email = '{member.Email}'");
+            Console.WriteLine($"ModelState.IsValid = {ModelState.IsValid}");
+
+            foreach (var item in ModelState)
             {
-                _context.Update(member);
-                await _context.SaveChangesAsync();
-
-
-                return RedirectToAction(nameof(Index));
+                foreach (var error in item.Value.Errors)
+                {
+                    Console.WriteLine($"{item.Key} => {error.ErrorMessage}");
+                }
             }
+
+            if (!ModelState.IsValid)
+            {
                 return View(member);
+            }
+
+            _context.Update(member);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
          //Details..............................Create and Edit
           //GET: Members/Details/5
