@@ -9,20 +9,19 @@ namespace LibraryManagementSystem.Models
 public class Book
 {
     public int Id {get; set;}
-    
-    [Required(ErrorMessage = "Title is required.")]
-    [StringLength(50, ErrorMessage = "Title cannot exceed 50 characters.")]
-    [RegularExpression(
-    @"^[A-Z][A-Za-z0-9\s,.\-]*$",
-    ErrorMessage = "Title must start with an uppercase letter."
-    )]
-    public string Title {get; set;} = string.Empty;
+        [Required(ErrorMessage = "Title is required.")]
+        [StringLength(50, ErrorMessage = "Title cannot exceed 50 characters.")]
+        [RegularExpression(
+        @"^[A-Z][A-Za-z0-9\s,.\-]*$",
+        ErrorMessage = "Title must start with an uppercase letter."
+        )]
+     public string Title {get; set;} = string.Empty;
 
-    [Required(ErrorMessage = "ISBN is required.")]
-    [StringLength(5, MinimumLength = 5,
-    ErrorMessage = "ISBN must be exactly 5 digits.")]
-    [RegularExpression(@"^\d{5}$",
-    ErrorMessage = "ISBN must contain exactly 5 digits.")]
+        [Required(ErrorMessage = "ISBN is required.")]
+        [StringLength(5, MinimumLength = 5,
+        ErrorMessage = "ISBN must be exactly 5 digits.")]
+        [RegularExpression(@"^\d{5}$",
+        ErrorMessage = "ISBN must contain exactly 5 digits.")]
     public string ISBN {get; set;} = string.Empty;
 
     [Required(ErrorMessage ="Total Copies is reuired")]
@@ -35,17 +34,14 @@ public class Book
 
      // Foreign key................
 
-    [Required(ErrorMessage = "Please select a Category.")]
-    [Display(Name = "Category")]
+    [Range(1, int.MaxValue, ErrorMessage = "Please select a Category.")]
     public int CategoryId { get; set; }
 
-
-    [Required(ErrorMessage = "Please select an Author.")]
-    [Display(Name = "Author")]
+    [Range(1, int.MaxValue, ErrorMessage = "Please select an Author.")] public int CategoryCount { get; set;}   
     public int AuthorId {get; set;}
+    
 
-    [Required(ErrorMessage = "Please select a Publisher.")]
-    [Display(Name = "Publisher")]
+    [Range(1, int.MaxValue, ErrorMessage = "Please select a Publisher.")]
     public int PublisherId { get; set; }
 
     //Navigation properties....................?

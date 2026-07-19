@@ -10,19 +10,14 @@ public class Book
 {
     public int Id {get; set;}
     
-    [Required(ErrorMessage = "Title is required.")]
-    [StringLength(50, ErrorMessage = "Title cannot exceed 50 characters.")]
-    [RegularExpression(
-    @"^[A-Z][A-Za-z0-9\s,.\-]*$",
-    ErrorMessage = "Title must start with an uppercase letter."
-    )]
+    [Required(ErrorMessage ="Title is reuired")]
+    [StringLength(50)]
     public string Title {get; set;} = string.Empty;
 
-    [Required(ErrorMessage = "ISBN is required.")]
-    [StringLength(5, MinimumLength = 5,
-    ErrorMessage = "ISBN must be exactly 5 digits.")]
-    [RegularExpression(@"^\d{5}$",
-    ErrorMessage = "ISBN must contain exactly 5 digits.")]
+    [Required(ErrorMessage ="ISBN is reuired")]
+    [StringLength(10, MinimumLength = 3,
+                ErrorMessage ="ISBN must be between 3 and 10 characters.")]
+    [Display(Name ="ISBN Number")]
     public string ISBN {get; set;} = string.Empty;
 
     [Required(ErrorMessage ="Total Copies is reuired")]

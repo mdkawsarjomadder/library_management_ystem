@@ -18,11 +18,10 @@ public class Book
     )]
     public string Title {get; set;} = string.Empty;
 
-    [Required(ErrorMessage = "ISBN is required.")]
-    [StringLength(5, MinimumLength = 5,
-    ErrorMessage = "ISBN must be exactly 5 digits.")]
-    [RegularExpression(@"^\d{5}$",
-    ErrorMessage = "ISBN must contain exactly 5 digits.")]
+    [Required(ErrorMessage ="ISBN is reuired")]
+    [StringLength(10, MinimumLength = 3,
+                ErrorMessage ="ISBN must be between 3 and 10 characters.")]
+    [Display(Name ="ISBN Number")]
     public string ISBN {get; set;} = string.Empty;
 
     [Required(ErrorMessage ="Total Copies is reuired")]
