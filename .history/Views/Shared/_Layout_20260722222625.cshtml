@@ -83,50 +83,6 @@
                         </a>
                     </li>
 
-
-                 <!-- # Register---Login--- and Logout  -->
-                 @if(SignInManager.IsSignedIn(User))
-                     {
-                        <li class="nav-item">
-                            <span class="nav-link">
-                                <i class="bi bi-person-circle"></i>
-                                @User.Identity?.Name
-                            </span>
-                        </li>
-
-                     <li class="nav-link">
-                          <form asp-controller="Account"
-                               asp-action="Logout"
-                                method="post">
-
-                            <button type="submit"
-                                    class="btn btn-link nav-link">
-                                    <i class="bi bi-box-arrow-right"></i>
-                                    Logout  
-                            </button> 
-
-                          </form>
-                     </li>
-                     }
-                     else 
-                     {
-                      <li class="nav-item">
-                          <a asp-controller="Account"
-                              asp-action="Login" 
-                              class="nav-link">
-                                   Login
-                          </a>
-                      </li>
-
-                      <li class="nav-item">
-                            <a asp-controller="Account"
-                                asp-action="Register"
-                                class="nav-link">
-                                    Register
-                                </a>
-
-                      </li>
-                     }
                 </ul>
 
             </div>
