@@ -1,0 +1,56 @@
+@model LibraryManagementSystem.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="bg-light-subtle text-light-emphasis p-3 rounded shadow mb-4">
+        <h2 class="mb-0 fw-bold">
+             <i class="bi bi-box-arrow-in-right text-primary"></i> Login..
+        </h2>
+    </div>
+
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">
+                <i class="bi bi-person-circle"></i>
+                User Login
+                </h4>
+        </div>
+
+        <!-- form -->
+        <div class="card-body p-4">
+            <form asp-action="Login" method="post">
+                <div asp-validation-summary="ModelOnly"  class="text-danger mb-3"></div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label asp-for="Email"class="form-label fw-bold h4"></label>
+                    <input asp-for="Email" class="form-control">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    <label asp-for="Password"class="form-label fw-bold h4"></label>
+                     <div class="position-relative">
+                        <input asp-for="Password"
+                         class="form-control"
+                         id="password"
+                         placeholder="Enter Password">
+
+                        <i class="bi bi-eye position-absolute"
+                            onclick="togglePassword('password', this)"
+                            style="right:15px; top:50%; transform:translateY(-50%); cursor:pointer;">
+                        </i>
+                     </div>
+
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                 <!-- Remember Me -->
+                 <div class="mb-3 form-check">
+                    <label asp-for="RememberMe"  class="form-check-input"></label>
+                 </div>
+            </form>
+        </div>
+    </div>
