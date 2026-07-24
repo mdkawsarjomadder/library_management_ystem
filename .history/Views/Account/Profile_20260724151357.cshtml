@@ -1,0 +1,59 @@
+
+    @model LibraryManagementSystem.Models.ApplicationUser
+    @{
+        ViewData["Title"] = "Profile";
+    }
+
+    <div class="">
+        <h1>
+        @ViewData["Title"]
+    </h1>
+    </div>
+
+    <div class="container mt-5">
+         <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="card shadow border-0">
+                    <div class="card-header bg-dark text-white">
+                        <h3 class="mb-0">
+                            <i class="bi bi-person-circle"></i>
+                             My Profile
+                        </h3>
+                    </div> 
+
+                    
+                      <div class="card-body">
+                       <table class="">
+                           <tr class="">
+                                <th width="35%" class=""> Name :</th>
+                                <td class="">@Model.Name</td>
+                            </tr>
+                           <tr class="">
+                                <th  class="">Email :</th>
+                                <td class="">@Model.Email</td>
+                            </tr>
+                           <tr class="">
+                                <th  class="">Phone :</th>
+                                <td class="">
+                                    @(string.IsNullOrEmpty(Model.PhoneNumber) ? "Not Added" : Model.PhoneNumber)
+                                    </td>
+                            </tr>
+                           <tr class="">
+                                <th  class="">UserName :</th>
+                                <td class="">@Model.UserName</td>
+                            </tr>
+                       </table>
+                        
+                        <div class="">
+                            <a asp-action="EditProfile"
+                               class="btn btn-warning" >
+                                 Edit Profile
+                               </a>
+                        </div>
+
+                      </div>
+                  
+                </div>
+            </div>
+         </div>
+    </div>

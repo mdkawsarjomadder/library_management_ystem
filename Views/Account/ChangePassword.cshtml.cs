@@ -8,11 +8,11 @@ using Microsoft.Extensions.Logging;
 
 namespace library_management_ystem.Views.Account
 {
-    public class Login : PageModel
+    public class ChangePassword : PageModel
     {
-        private readonly ILogger<Login> _logger;
+        private readonly ILogger<ChangePassword> _logger;
 
-        public Login(ILogger<Login> logger)
+        public ChangePassword(ILogger<ChangePassword> logger)
         {
             _logger = logger;
         }
