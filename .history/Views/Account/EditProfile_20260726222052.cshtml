@@ -1,0 +1,135 @@
+    @model LibraryManagementSystem.ViewModels.EditProfileViewModel
+    @{
+        ViewData["Title"] = "Edit Profile";
+    }
+
+   <div class="">
+      <h1>
+        @ViewData["Title"]
+        </h1>
+   </div>
+
+    <div class="container mt-5">
+        <div class="row justity-content-center">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header bg-warning">
+                        <h3 class="">
+                            <i class="bi bi-pencil-square"></i>
+                            Edit Profile
+                        </h3>
+                    </div>
+                    <!--  -->
+                    <div class="card-body">
+
+                        <form asp-action="EditProfile"
+                            method="post"
+                            enctype="multipart/form-data">
+
+                            <div asp-validation-summary="ModelOnly"
+                                class="text-danger mb-3">
+                            </div>
+
+                            <div class="row">
+
+                                <!-- Left Side -->
+                                <div class="col-md-4 text-center">
+
+                                    @if (Model.ProfileImageFile is not null && Model.ProfileImageFile.Length > 0)
+                                    {
+                                        <img src="~/uploads/profile/@Model.ProfileImage"
+                                            class="rounded-circle shadow mb-3"
+                                            width="180"
+                                            height="180"
+                                            style="object-fit:cover;" />
+                                    }
+                                    else if (!string.IsNullOrEmpty(Model.ProfileImage))
+                                    {
+                                        <img src="~/uploads/profile/@Model.ProfileImage"
+                                            class="rounded-circle shadow mb-3"
+                                            width="180"
+                                            height="180"
+                                            style="object-fit:cover;" />
+                                    }
+                                    else
+                                    {
+                                        <div class="rounded-circle bg-warning d-flex align-items-center justify-content-center mx-auto shadow"
+                                            style="width:180px;height:180px;font-size:60px;font-weight:bold;">
+                                            @Model.Name.Substring(0,1).ToUpper()
+                                        </div>
+                                    }
+
+                                    <div class="mb-3">
+
+                                        <label asp-for="ProfileImageFile"
+                                            class="form-label fw-bold">
+                                        </label>
+
+                                        <input asp-for="ProfileImageFile"
+                                            type="file"
+                                            class="form-control"
+                                            accept="image/*" />
+
+                                        <span asp-validation-for="ProfileImageFile"
+                                            class="text-danger"></span>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Right Side -->
+
+                                <div class="col-md-8">
+
+                                    <div class="mb-3">
+                                        <label asp-for="Name"></label>
+                                        <input asp-for="Name" class="form-control" />
+                                        <span asp-validation-for="Name"
+                                            class="text-danger"></span>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label>Email</label>
+                                        <input value="@User.Identity?.Name"
+                                            class="form-control"
+                                            readonly />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label asp-for="PhoneNumber"></label>
+                                        <input asp-for="PhoneNumber"
+                                            class="form-control" />
+                                        <span asp-validation-for="PhoneNumber"
+                                            class="text-danger"></span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="text-center mt-4">
+
+                                <button type="submit"
+                                        class="btn btn-success px-5">
+                                    <i class="bi bi-check-circle"></i>
+                                    Save Changes
+                                </button>
+
+                                <a asp-action="Profile"
+                                class="btn btn-secondary px-5">
+                                    Cancel
+                                </a>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    }

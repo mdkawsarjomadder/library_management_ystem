@@ -1,0 +1,128 @@
+@model LibraryManagementSystem.ViewModels.EditProfileViewModel
+
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+
+        <div class="col-md-7">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-warning">
+                    <h3>
+                        <i class="bi bi-pencil-square"></i>
+                        Edit Profile
+                    </h3>
+                </div>
+
+                <div class="card-body">
+
+                    <form asp-action="EditProfile"
+                          method="post"
+                          enctype="multipart/form-data">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <!-- Profile Image -->
+                        <div class="text-center mb-4">
+
+                            @if (!string.IsNullOrEmpty(Model.ProfileImage))
+                            {
+                                <img src="~/uploads/profile/@Model.ProfileImage"
+                                     class="rounded-circle shadow"
+                                     width="150"
+                                     height="150"
+                                     style="object-fit:cover;" />
+                            }
+                            else
+                            {
+                                <img src="~/images/default-user.png"
+                                     class="rounded-circle shadow"
+                                     width="150"
+                                     height="150"
+                                     style="object-fit:cover;" />
+                            }
+
+                        </div>
+
+                        <!-- Upload Image -->
+
+                        <div class="mb-3">
+
+                            <label asp-for="ProfileImageFile"
+                                   class="form-label fw-bold">
+                            </label>
+
+                            <input asp-for="ProfileImageFile"
+                                   type="file"
+                                   class="form-control"
+                                   accept="image/*" />
+
+                            <span asp-validation-for="ProfileImageFile"
+                                  class="text-danger"></span>
+
+                        </div>
+
+                        <!-- Name -->
+
+                        <div class="mb-3">
+
+                            <label asp-for="Name"></label>
+
+                            <input asp-for="Name"
+                                   class="form-control" />
+
+                            <span asp-validation-for="Name"
+                                  class="text-danger"></span>
+
+                        </div>
+
+                        <!-- Phone -->
+
+                        <div class="mb-3">
+
+                            <label asp-for="PhoneNumber"></label>
+
+                            <input asp-for="PhoneNumber"
+                                   class="form-control" />
+
+                            <span asp-validation-for="PhoneNumber"
+                                  class="text-danger"></span>
+
+                        </div>
+
+                        <!-- Buttons -->
+
+                        <div class="text-center">
+
+                            <button class="btn btn-success px-5">
+                                <i class="bi bi-check-circle"></i>
+                                Save Changes
+                            </button>
+
+                            <a asp-action="Profile"
+                               class="btn btn-secondary px-5">
+                                Cancel
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
