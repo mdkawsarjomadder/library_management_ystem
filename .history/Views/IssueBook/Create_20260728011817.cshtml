@@ -1,0 +1,55 @@
+
+@model LibraryManagementSystem.Models.IssueBook
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="bg-light rounded shadow ">
+    <h1 class="ms-2 fw-bold">
+        @ViewData["Title"]
+    </h1>
+</div>
+
+<div class="d-flex justify-content-center-between align-items-center md-4">
+    <div class="ms-2">
+        <h2 class="fw-bold">
+            📖 Issue Book
+        </h2>
+        <p class="text-muted mb-0 ms-3">
+            Issue a book to a library member.
+        </p>
+    </div>
+
+    <div class="">
+        <a asp-action="Index" class="btn btn-secondary">
+             <i class="bi bi-arrow-left h4 "></i> 
+              <span class="fw-bold h4 link-warning"> Back</span>
+        </a>
+      </div>
+    
+    </div>
+    
+        <div class="card shadow">
+         <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">
+                <i class="bi bi-book"></i>
+                Book Issue Form
+            </h4>
+              
+         </div>
+     
+
+      
+
+        <div class="card-body">
+            <form  asp-action="Cretae" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <!-- Memeber-->
+                <div class="mb-3">
+                    <label asp-for="UserId" class="form-label"></label>
+                </div>
+            </form>
+        </div>
+
+</div>
