@@ -220,8 +220,14 @@ namespace LibraryManagementSystem.Migrations
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<decimal>("Fine")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<bool>("IsReturned")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime>("IssueDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("ReturnDate")
                         .HasColumnType("datetime2");
@@ -236,7 +242,7 @@ namespace LibraryManagementSystem.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("issueBooks");
+                    b.ToTable("IssueBooks");
                 });
 
             modelBuilder.Entity("LibraryManagementSystem.Models.Member", b =>

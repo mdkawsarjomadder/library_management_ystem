@@ -552,3 +552,11 @@ D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.pdb
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.genruntimeconfig.cache
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\ref\LibraryManagementSystem.dll
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\compressed\wadqovfpf4-{0}-rtgy7zud14-rtgy7zud14.gz
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\ClosedXML.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\ClosedXML.Parser.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\DocumentFormat.OpenXml.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\DocumentFormat.OpenXml.Framework.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\ExcelNumberFormat.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\RBush.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\SixLabors.Fonts.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\System.IO.Packaging.dll

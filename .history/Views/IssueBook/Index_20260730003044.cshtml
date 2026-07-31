@@ -1,0 +1,39 @@
+@model IEnumerable<LibraryManagementSystem.Models.IssueBook>
+@{
+    ViewData["Title"] = "Issued Books";
+}
+
+ <div class=" Rounded shadow ">
+    <h1 class="ms-2">@ViewData["Title"]</h1>
+ </div>
+
+    <div class="d-flex justifyy-context-between aling-items-center md-4">
+        <div class="">
+            <h2 class="fw-bold">📚 Issued Books</h2>
+            <p class="text-muted mb-0 ms-4">
+                Manage all issued books.
+            </p>
+        </div>
+         <a asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i>
+            Issue Book
+        </a>
+
+         
+    </div>
+
+    <div class="card shadow mt-2">
+        <div class="card-header bg-dark text-white">
+             <h4 class="mb-0">
+                <i class="bi bi-book"></i>
+                Issued Book List
+            </h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-hover text-center align-middle">
+                <thead class="table-dark">
+                    
+                </thead>
+            </table>
+        </div>
+    </div>
