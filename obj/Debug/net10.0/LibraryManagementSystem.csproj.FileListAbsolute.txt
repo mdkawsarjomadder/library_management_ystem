@@ -252,8 +252,13 @@ D:\D_Net\library_management_ystem\bin\Debug\net10.0\LibraryManagementSystem.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\LibraryManagementSystem.pdb
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Azure.Core.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Azure.Identity.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\ClosedXML.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\ClosedXML.Parser.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\DocumentFormat.OpenXml.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\DocumentFormat.OpenXml.Framework.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\EPPlus.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\EPPlus.Interfaces.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\ExcelNumberFormat.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Humanizer.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.UI.dll
@@ -288,6 +293,8 @@ D:\D_Net\library_management_ystem\bin\Debug\net10.0\Microsoft.VisualStudio.Solut
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Mono.TextTemplating.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\Newtonsoft.Json.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\QuestPDF.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\RBush.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\SixLabors.Fonts.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\System.ClientModel.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\System.CodeDom.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\System.Composition.AttributedModel.dll
@@ -297,6 +304,7 @@ D:\D_Net\library_management_ystem\bin\Debug\net10.0\System.Composition.Runtime.d
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\System.Composition.TypedParts.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\System.Configuration.ConfigurationManager.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+D:\D_Net\library_management_ystem\bin\Debug\net10.0\System.IO.Packaging.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\System.Memory.Data.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\System.Security.Cryptography.ProtectedData.dll
 D:\D_Net\library_management_ystem\bin\Debug\net10.0\cs\Microsoft.CodeAnalysis.resources.dll
@@ -551,12 +559,4 @@ D:\D_Net\library_management_ystem\obj\Debug\net10.0\refint\LibraryManagementSyst
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.pdb
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\LibraryManagementSystem.genruntimeconfig.cache
 D:\D_Net\library_management_ystem\obj\Debug\net10.0\ref\LibraryManagementSystem.dll
-D:\D_Net\library_management_ystem\obj\Debug\net10.0\compressed\wadqovfpf4-{0}-rtgy7zud14-rtgy7zud14.gz
-D:\D_Net\library_management_ystem\bin\Debug\net10.0\ClosedXML.dll
-D:\D_Net\library_management_ystem\bin\Debug\net10.0\ClosedXML.Parser.dll
-D:\D_Net\library_management_ystem\bin\Debug\net10.0\DocumentFormat.OpenXml.dll
-D:\D_Net\library_management_ystem\bin\Debug\net10.0\DocumentFormat.OpenXml.Framework.dll
-D:\D_Net\library_management_ystem\bin\Debug\net10.0\ExcelNumberFormat.dll
-D:\D_Net\library_management_ystem\bin\Debug\net10.0\RBush.dll
-D:\D_Net\library_management_ystem\bin\Debug\net10.0\SixLabors.Fonts.dll
-D:\D_Net\library_management_ystem\bin\Debug\net10.0\System.IO.Packaging.dll
+D:\D_Net\library_management_ystem\obj\Debug\net10.0\compressed\wadqovfpf4-{0}-t72rirzc1k-t72rirzc1k.gz
