@@ -1,0 +1,41 @@
+
+@{
+    ViewData["Title"] = "About";
+}
+
+<div class="border shadow rounded">
+    <h1 class="ms-2 ">@ViewData["Title"]</h1>
+</div>
+
+<div class="card shadow mt-4">
+    <div class="card-header bg-dark text-white">
+        <h2 class="">📖 About LibraryMS</h2>
+    </div>
+
+    <div class="card-body">
+
+        <h4>Library Management System</h4>
+        <p>
+            This Library Management System is developed using
+            ASP.NET Core MVC, Entity Framework Core and SQL Server.
+        </p>
+        <hr />
+        <h5>Features</h5>
+    </div>
+      <ul>
+        <li>Member Management</li>
+        <li>Book Management</li>
+        <li>Book issue & Return</li>
+        <li>Fine Calculation</li>
+        <li>Excel Export</li>
+        <li>PDF Generation</li>
+        <li>Authentication & Authorization</li>
+      </ul>
+
+        <hr/>
+        <div class="text-muted ms-3 bg-secondary bg-gradient">
+            Version 1.0 | © LibraryMS
+            <span class="">@DateTime.Now.ToString("dd-MMM-yy")</span>
+        </div>
+
+</div>

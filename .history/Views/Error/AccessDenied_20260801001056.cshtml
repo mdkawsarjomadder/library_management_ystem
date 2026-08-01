@@ -1,0 +1,34 @@
+
+@{
+    ViewData["Title"] = "Access Denied";
+}
+
+<div class="bg-light rounded shadow mt-2">
+    <h1 class="ms-2">@ViewData["Title"]</h1>
+</div>
+
+<div class="text-center mt-5">
+
+    <h1 class="display-1 text-warning fw-bold">
+        403
+    </h1>
+
+    <h2 class="fw-bold">
+        Access Denied
+    </h2>
+
+    <p class="text-muted">
+        Sorry! You are not authorized to access this page.
+    </p>
+
+    <a asp-controller="Home"
+       asp-action="Index"
+       class="btn btn-primary">
+
+        <i class="bi bi-house"></i>
+        Back to Home
+
+    </a>
+
+</div>
+
