@@ -71,6 +71,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/D_Net/library_management_ystem/Views/Books/Print.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va3NcUHJpbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/D_Net/library_management_ystem/Views/Borrows/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9ycm93c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -81,6 +85,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/D_Net/library_management_ystem/Views/Borrows/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9ycm93c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/D_Net/library_management_ystem/Views/Borrows/Print.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9ycm93c1xQcmludC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/D_Net/library_management_ystem/Views/Borrows/Return.cshtml]
@@ -117,6 +125,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/D_Net/library_management_ystem/Views/IssueBook/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXNzdWVCb29rXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/D_Net/library_management_ystem/Views/IssueBook/Print.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXNzdWVCb29rXFByaW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/D_Net/library_management_ystem/Views/Members/Create.cshtml]
